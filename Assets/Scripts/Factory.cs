@@ -7,10 +7,11 @@ public class Factory : MonoBehaviour
 	[SerializeField]
 	private int factoryType;
 	private RecycleItem itemToBeRecycled;
+	ScoreCounter scoreCounter;
 	
     void Start()
     {
-        
+		scoreCounter = FindObjectOfType<ScoreCounter>();
     }
 
     // Update is called once per frame
@@ -18,7 +19,7 @@ public class Factory : MonoBehaviour
     {
 		if (itemToBeRecycled != null && CompareWithReceivedItem(itemToBeRecycled))
 		{
-			
+			scoreCounter.IncreaseTheScore(1);
 			Destroy(itemToBeRecycled.gameObject);
 			Debug.Log("Distrus");
 		}
