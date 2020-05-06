@@ -7,7 +7,10 @@ public class Factory : MonoBehaviour
 	[SerializeField]
 	private int factoryType;
 	private RecycleItem itemToBeRecycled;
-	ScoreCounter scoreCounter;
+
+	private ScoreCounter scoreCounter;
+	[SerializeField]
+	private int scoreAmount;
 	
     void Start()
     {
@@ -19,9 +22,13 @@ public class Factory : MonoBehaviour
     {
 		if (itemToBeRecycled != null && CompareWithReceivedItem(itemToBeRecycled))
 		{
-			scoreCounter.IncreaseTheScore(1);
+			scoreCounter.IncreaseTheScore(scoreAmount);
 			Destroy(itemToBeRecycled.gameObject);
 			Debug.Log(scoreCounter.Score);
+		}
+		else
+		{
+			scoreCounter.DecreaseTheScore(scoreAmount);
 		}
     }
 	bool CompareWithReceivedItem(RecycleItem recycleItem)

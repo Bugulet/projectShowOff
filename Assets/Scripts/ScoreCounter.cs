@@ -19,4 +19,8 @@ public class ScoreCounter : MonoBehaviour
 	{
 		Score += amountToAdd;
 	}
+	public void DecreaseTheScore(int amountToAdd)
+	{
+		Score -= amountToAdd;
+	}
 }
