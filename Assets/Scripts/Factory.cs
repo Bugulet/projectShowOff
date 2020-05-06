@@ -21,16 +21,14 @@ public class Factory : MonoBehaviour
 		{
 			scoreCounter.IncreaseTheScore(1);
 			Destroy(itemToBeRecycled.gameObject);
-			Debug.Log("Distrus");
+			Debug.Log(scoreCounter.Score);
 		}
     }
 	bool CompareWithReceivedItem(RecycleItem recycleItem)
 	{
 		if(recycleItem.itemType == factoryType)
 		{
-			Debug.Log("adevarat");
 			return true;
-			
 		}
 		else
 		{
