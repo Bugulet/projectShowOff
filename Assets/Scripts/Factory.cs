@@ -42,9 +42,19 @@ public class Factory : MonoBehaviour
 			return false;
 		}
 	}
-	void OnCollisionEnter(Collision collision)
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "recycleItem")
+        {
+            itemToBeRecycled = collision.gameObject.GetComponent<RecycleItem>();
+            Debug.Log("Collided");
+        }
+    }
+
+    void OnCollisionEnter(Collision collision)
 	{
-		Debug.Log("Collided");
+		
 		if (collision.gameObject.tag == "recycleItem")
 		{
 			itemToBeRecycled = collision.gameObject.GetComponent<RecycleItem>();
