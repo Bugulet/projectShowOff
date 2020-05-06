@@ -10,7 +10,7 @@ public class RecycleItem : MonoBehaviour
     void Start()
     {
 		
-		potentialItemType = Random.Range(0, 2);
+		potentialItemType = Random.Range(0, 3);
 		itemType = potentialItemType;
 		Debug.Log(itemType);
 		
@@ -19,6 +19,7 @@ public class RecycleItem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
 		if (itemType == 0)
 		{
 			gameObject.GetComponent<Renderer>().material.SetColor("_BaseColor", Color.green);

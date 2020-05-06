@@ -36,7 +36,7 @@ public class Factory : MonoBehaviour
 			return false;
 		}
 	}
-	private void OnCollisionEnter(Collision collision)
+	void OnCollisionEnter(Collision collision)
 	{
 		Debug.Log("Collided");
 		if (collision.gameObject.tag == "recycleItem")
