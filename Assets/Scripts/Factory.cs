@@ -10,7 +10,7 @@ public class Factory : MonoBehaviour
 
 	private ScoreCounter scoreCounter;
 	[SerializeField]
-	private int scoreAmount;
+	private int scoreAmount=1;
 	
     void Start()
     {
@@ -20,16 +20,27 @@ public class Factory : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-		if (itemToBeRecycled != null && CompareWithReceivedItem(itemToBeRecycled))
+        if (itemToBeRecycled != null && itemToBeRecycled.GetComponent<Lean.Touch.LeanSelectable>().IsSelected == false)
 		{
-			scoreCounter.IncreaseTheScore(scoreAmount);
-			Destroy(itemToBeRecycled.gameObject);
-			Debug.Log(scoreCounter.Score);
-		}
-		else
-		{
-			scoreCounter.DecreaseTheScore(scoreAmount);
-		}
+            if (CompareWithReceivedItem(itemToBeRecycled))
+            {
+                scoreCounter.IncreaseTheScore(scoreAmount);
+
+                //set it to innactive but dont destroy it, used for regenerating the item afterwards
+                itemToBeRecycled.gameObject.SetActive(false);
+                
+                Debug.Log("score: " + scoreCounter.Score);
+            }
+            else
+            {
+                scoreCounter.DecreaseTheScore(scoreAmount);
+            }
+
+            //clear reference
+            itemToBeRecycled = null;
+
+        }
+		
     }
 	bool CompareWithReceivedItem(RecycleItem recycleItem)
 	{
