@@ -6,43 +6,52 @@ public class Factory : MonoBehaviour
 {
 	[SerializeField]
 	private int factoryType;
-	private RecycleItem itemToBeRecycled;
+	public RecycleItem itemToBeRecycled;
 
 	private ScoreCounter scoreCounter;
 	[SerializeField]
-	private int scoreAmount=1;
-	
-    void Start()
-    {
+	private int scoreAmount = 1;
+
+	public int itemsRecycled;
+
+	public GameObject[] EnvironmentTrash;
+
+	void Start()
+	{
 		scoreCounter = FindObjectOfType<ScoreCounter>();
-    }
+	}
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (itemToBeRecycled != null && itemToBeRecycled.GetComponent<Lean.Touch.LeanSelectable>().IsSelected == false)
+	// Update is called once per frame
+	void Update()
+	{
+		if (itemToBeRecycled != null && itemToBeRecycled.GetComponent<Lean.Touch.LeanSelectable>().IsSelected == false)
 		{
-            if (CompareWithReceivedItem(itemToBeRecycled))
-            {
-                scoreCounter.IncreaseTheScore(scoreAmount);
+			if (CompareWithReceivedItem(itemToBeRecycled))
+			{
+				scoreCounter.IncreaseTheScore(scoreAmount);
 
-                //set it to innactive but dont destroy it, used for regenerating the item afterwards
-                itemToBeRecycled.gameObject.SetActive(false);
-                
-                Debug.Log("score: " + scoreCounter.Score);
-            }
-            else
-            {
-                scoreCounter.DecreaseTheScore(scoreAmount);
-            }
+				//set it to innactive but dont destroy it, used for regenerating the item afterwards
+				itemToBeRecycled.gameObject.SetActive(false);
 
-            //clear reference
-            itemToBeRecycled = null;
+				Debug.Log("score: " + scoreCounter.Score);
 
-        }
+				itemsRecycled++;
+				
+			}
+			else
+			{
+				scoreCounter.DecreaseTheScore(scoreAmount);
+			}
+
+			
+			itemToBeRecycled = null;
+
+		}
+
+		
 		
     }
-	bool CompareWithReceivedItem(RecycleItem recycleItem)
+	public bool CompareWithReceivedItem(RecycleItem recycleItem)
 	{
 		if(recycleItem.itemType == factoryType)
 		{
@@ -54,7 +63,7 @@ public class Factory : MonoBehaviour
 		}
 	}
 
-    private void OnTriggerEnter2D(Collider2D collision)
+	private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "recycleItem")
         {
