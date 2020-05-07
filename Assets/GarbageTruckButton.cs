@@ -1,30 +1,51 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GarbageTruckButton : MonoBehaviour
 {
     [SerializeField]
     GameObject trashPanel;
 
+    [SerializeField]
+    [Range(0, 14)]
+    float rechargeTime;
+
+    float timeRemaining;
+
+    Text innerText;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        innerText= transform.GetChild(0).gameObject.GetComponent<Text>();
+        timeRemaining = rechargeTime;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        timeRemaining += Time.deltaTime;
+        if (timeRemaining < rechargeTime)
+        {
+            innerText.text = "Time left: " + (int)(rechargeTime- timeRemaining);
+        }
+        else
+        {
+            innerText.text = "Ready, captain!";
+        }
     }
 
     public void ReplenishTrash()
     {
-        for (int i = 0; i < trashPanel.transform.childCount; i++)
+        if (timeRemaining > rechargeTime)
         {
-
-            trashPanel.transform.GetChild(i).gameObject.transform.GetChild(0).gameObject.SetActive(true);
+            for (int i = 0; i < trashPanel.transform.childCount; i++)
+            {
+                trashPanel.transform.GetChild(i).gameObject.transform.GetChild(0).gameObject.SetActive(true);
+            }
+            timeRemaining = 0;
         }
     }
 }
