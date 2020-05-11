@@ -12,6 +12,10 @@ public class Factory : MonoBehaviour
 	[SerializeField]
 	private int scoreAmount = 1;
 
+	private MaterialCounter materialCounter;
+	[SerializeField]
+	private int materialAmount = 1;
+
 	public int itemsRecycled;
 
 	public GameObject[] EnvironmentTrash;
@@ -19,6 +23,7 @@ public class Factory : MonoBehaviour
 	void Start()
 	{
 		scoreCounter = FindObjectOfType<ScoreCounter>();
+		materialCounter = FindObjectOfType<MaterialCounter>();
 	}
 
 	// Update is called once per frame
@@ -29,7 +34,7 @@ public class Factory : MonoBehaviour
 			if (CompareWithReceivedItem(itemToBeRecycled))
 			{
 				scoreCounter.IncreaseTheScore(scoreAmount);
-
+				materialCounter.IncreaseMaterials(materialAmount);
 				//set it to innactive but dont destroy it, used for regenerating the item afterwards
 				itemToBeRecycled.gameObject.SetActive(false);
 

@@ -10,7 +10,7 @@ public class GarbageTruckButton : MonoBehaviour
 
     [SerializeField]
     [Range(0, 14)]
-    float rechargeTime;
+    public float rechargeTime;
 
     float timeRemaining;
 
