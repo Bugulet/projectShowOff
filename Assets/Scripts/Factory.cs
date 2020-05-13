@@ -4,66 +4,65 @@ using UnityEngine;
 
 public class Factory : MonoBehaviour
 {
-	[SerializeField]
-	private int factoryType;
-	public RecycleItem itemToBeRecycled;
+    [SerializeField]
+    private int factoryType;
 
-	private ScoreCounter scoreCounter;
-	[SerializeField]
-	private int scoreAmount = 1;
+    [HideInInspector]
+    public RecycleItem itemToBeRecycled;
 
-	public int itemsRecycled;
+    private ScoreCounter scoreCounter;
 
-	public GameObject[] EnvironmentTrash;
+    [SerializeField]
+    private int scoreAmount = 1;
+    
+    [Tooltip("Required items before the minigame is starting")]
+    public int recycledItemsThreshold = 3;
 
-	void Start()
-	{
-		scoreCounter = FindObjectOfType<ScoreCounter>();
-	}
+    [HideInInspector]
+    public int itemsRecycled;
 
-	// Update is called once per frame
-	void Update()
-	{
-		if (itemToBeRecycled != null && itemToBeRecycled.GetComponent<Lean.Touch.LeanSelectable>().IsSelected == false)
-		{
-			if (CompareWithReceivedItem(itemToBeRecycled))
-			{
-				scoreCounter.IncreaseTheScore(scoreAmount);
+    public GameObject[] EnvironmentTrash;
 
-				//set it to innactive but dont destroy it, used for regenerating the item afterwards
-				itemToBeRecycled.gameObject.SetActive(false);
-
-				Debug.Log("score: " + scoreCounter.Score);
-
-				itemsRecycled++;
-				
-			}
-			else
-			{
-				scoreCounter.DecreaseTheScore(scoreAmount);
-			}
-
-			
-			itemToBeRecycled = null;
-
-		}
-
-		
-		
+    private void Start()
+    {
+        scoreCounter = FindObjectOfType<ScoreCounter>();
     }
-	public bool CompareWithReceivedItem(RecycleItem recycleItem)
-	{
-		if(recycleItem.itemType == factoryType)
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
-	}
 
-	private void OnTriggerEnter2D(Collider2D collision)
+    // Update is called once per frame
+    private void Update()
+    {
+        if (itemToBeRecycled != null && itemToBeRecycled.GetComponent<Lean.Touch.LeanSelectable>().IsSelected == false)
+        {
+            if (CompareWithReceivedItem(itemToBeRecycled))
+            {
+                scoreCounter.IncreaseTheScore(scoreAmount);
+
+                //set it to innactive but dont destroy it, used for regenerating the item afterwards
+                itemToBeRecycled.gameObject.SetActive(false);
+                
+                itemsRecycled++;
+
+            }
+            else
+            {
+                scoreCounter.DecreaseTheScore(scoreAmount);
+            }
+            itemToBeRecycled = null;
+        }
+    }
+    public bool CompareWithReceivedItem(RecycleItem recycleItem)
+    {
+        if (recycleItem.itemType == factoryType)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "recycleItem")
         {
@@ -72,14 +71,13 @@ public class Factory : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter(Collision collision)
-	{
-		
-		if (collision.gameObject.tag == "recycleItem")
-		{
-			itemToBeRecycled = collision.gameObject.GetComponent<RecycleItem>();
-			Debug.Log("Collided");
-		}
-	}
-	
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "recycleItem")
+        {
+            itemToBeRecycled = collision.gameObject.GetComponent<RecycleItem>();
+            Debug.Log("Collided");
+        }
+    }
+
 }
