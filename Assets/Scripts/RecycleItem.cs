@@ -35,7 +35,7 @@ public class RecycleItem : MonoBehaviour
         }
         if (itemType == 2)
         {
-            gameObject.GetComponent<Image>().overrideSprite = Resources.Load<Sprite>("Sprites/metal/" + Random.Range(0, 1));
+            gameObject.GetComponent<Image>().overrideSprite = Resources.Load<Sprite>("Sprites/metal/" + Random.Range(0, 7));
         }
     }
 
