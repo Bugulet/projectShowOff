@@ -10,14 +10,34 @@ public class SceneChanger : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
-    public static void GoToGame()
+    public static void GoToTutorial()
     {
         SceneManager.LoadScene(1);
+    }
+
+    public static void GoToGame()
+    {
+        SceneManager.LoadScene(2);
+    }
+
+    public static void GoToEnd()
+    {
+        SceneManager.LoadScene(3);
     }
 
     public void GoToGameWrapper()
     {
         GoToGame();
+    }
+
+    public void GoToStartWrapper()
+    {
+        GoToStart();
+    }
+
+    public void GoToTutorialWrapper()
+    {
+        GoToTutorial();
     }
 
 }

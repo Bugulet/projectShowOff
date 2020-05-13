@@ -9,6 +9,12 @@ EditorBuildSettings:
     path: Assets/Scenes/StartScene.unity
     guid: e12bc865065f5494096173ce5c19f0ee
   - enabled: 1
+    path: Assets/Scenes/TutorialScene.unity
+    guid: e919bba86c3f7f84a8a4dfac70c363c0
+  - enabled: 1
     path: Assets/Scenes/Sebi Scene.unity
     guid: ab446ead923ac854680ac21a4021acba
+  - enabled: 1
+    path: Assets/Scenes/EndScene.unity
+    guid: 326413acbc54a2a419721253dece648d
   m_configObjects: {}

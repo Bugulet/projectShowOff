@@ -18,6 +18,8 @@ public class UpgradeManager : MonoBehaviour
 
 	private GarbageTruckButton garbageTruck;
 
+    private float timer = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,6 +35,16 @@ public class UpgradeManager : MonoBehaviour
 		{
 			EnableUpgradeButton();
 		}
+
+        if (timer > 0)
+        {
+            print("timer: " + timer);
+            timer += Time.deltaTime;
+        }
+        if (timer > 4)
+        {
+            GoToEnd();
+        }
     }
 
 	private void EnableUpgradeButton()
@@ -103,9 +115,13 @@ public class UpgradeManager : MonoBehaviour
 		DisableUpgradeButton();
 	}
 
+
 	public void CreateForestButtonPressed()
 	{
-		if(MacroUpgradeButton == null)
+        print("SCRIE");
+        Invoke("GoToEnd", 2.0f);
+
+        if (MacroUpgradeButton == null)
 		{
 			return;
 		}
@@ -116,6 +132,11 @@ public class UpgradeManager : MonoBehaviour
 		DisableAllButtons();
 		DisableUpgradeButton();
 	}
+
+    private void GoToEnd()
+    {
+        SceneChanger.GoToEnd();
+    }
 
 	public void UpgradeGarbageTruck()
 	{
