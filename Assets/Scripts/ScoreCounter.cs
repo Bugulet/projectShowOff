@@ -11,6 +11,7 @@ public class ScoreCounter : MonoBehaviour
     Text scoreText;
 
     public int Score { get; private set; }
+	
 	void Start()
     {
 		Score = 0;
@@ -21,7 +22,7 @@ public class ScoreCounter : MonoBehaviour
         
     }
 
-    private void updateScore()
+    private void updateScoreText()
     {
         scoreText.text ="Score: "+ Score;
     }
@@ -29,11 +30,11 @@ public class ScoreCounter : MonoBehaviour
 	public void IncreaseTheScore(int amountToAdd)
 	{
 		Score += amountToAdd;
-        updateScore();
+        updateScoreText();
 	}
 	public void DecreaseTheScore(int amountToAdd)
 	{
 		Score -= amountToAdd;
-        updateScore();
+        updateScoreText();
     }
 }
