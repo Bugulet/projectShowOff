@@ -27,11 +27,11 @@ public class RecycleItem : MonoBehaviour
 
         if (itemType == 0)
         {
-            gameObject.GetComponent<Image>().overrideSprite = Resources.Load<Sprite>("Sprites/organic/" + Random.Range(0, 1));
+            gameObject.GetComponent<Image>().overrideSprite = Resources.Load<Sprite>("Sprites/organic/" + Random.Range(0, 8));
         }
         if (itemType == 1)
         {
-            gameObject.GetComponent<Image>().overrideSprite = Resources.Load<Sprite>("Sprites/paper/" + Random.Range(0, 1));
+            gameObject.GetComponent<Image>().overrideSprite = Resources.Load<Sprite>("Sprites/paper/" + Random.Range(0, 9));
         }
         if (itemType == 2)
         {
