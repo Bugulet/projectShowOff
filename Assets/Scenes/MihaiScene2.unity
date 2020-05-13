@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -636,7 +636,7 @@ GameObject:
   - component: {fileID: 128741495}
   - component: {fileID: 128741494}
   m_Layer: 5
-  m_Name: Panel (1)
+  m_Name: MaterialCount
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5367,11 +5367,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29228bce8e6a73e4f87802c71238a4c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  factoryType: 0
-  itemToBeRecycled: {fileID: 0}
-  scoreAmount: 1
-  materialAmount: 1
-  itemsRecycled: 0
   EnvironmentTrash:
   - {fileID: 1740800925}
   - {fileID: 1399388225}
@@ -5380,6 +5375,12 @@ MonoBehaviour:
   - {fileID: 1841850550}
   - {fileID: 562685182}
   - {fileID: 1566025212}
+  recycledItemsThreshold: 3
+  itemsRecycled: 0
+  itemToBeRecycled: {fileID: 0}
+  scoreAmount: 1
+  materialAmount: 1
+  factoryType: 0
 --- !u!61 &1689943602
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6303,11 +6304,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29228bce8e6a73e4f87802c71238a4c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  factoryType: 2
-  itemToBeRecycled: {fileID: 0}
-  scoreAmount: 1
-  materialAmount: 1
-  itemsRecycled: 0
   EnvironmentTrash:
   - {fileID: 1740800925}
   - {fileID: 1399388225}
@@ -6316,6 +6312,12 @@ MonoBehaviour:
   - {fileID: 1841850550}
   - {fileID: 562685182}
   - {fileID: 1566025212}
+  recycledItemsThreshold: 3
+  itemsRecycled: 0
+  itemToBeRecycled: {fileID: 0}
+  scoreAmount: 1
+  materialAmount: 1
+  factoryType: 2
 --- !u!1 &1899406165
 GameObject:
   m_ObjectHideFlags: 0
@@ -6639,11 +6641,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29228bce8e6a73e4f87802c71238a4c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  factoryType: 1
-  itemToBeRecycled: {fileID: 0}
-  scoreAmount: 1
-  materialAmount: 1
-  itemsRecycled: 0
   EnvironmentTrash:
   - {fileID: 1740800925}
   - {fileID: 1399388225}
@@ -6652,6 +6649,12 @@ MonoBehaviour:
   - {fileID: 1841850550}
   - {fileID: 562685182}
   - {fileID: 1566025212}
+  recycledItemsThreshold: 3
+  itemsRecycled: 0
+  itemToBeRecycled: {fileID: 0}
+  scoreAmount: 1
+  materialAmount: 1
+  factoryType: 1
 --- !u!1 &2008138259
 GameObject:
   m_ObjectHideFlags: 0

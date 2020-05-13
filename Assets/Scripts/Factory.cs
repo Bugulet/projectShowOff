@@ -28,11 +28,15 @@ public class Factory : MonoBehaviour
     private MaterialCounter materialCounter;
     private GameObject recycleButton;
 
+	public GameObject paperMiniGameObject;
+	private PaperFactoryMiniGame paperMiniGame;
+
 	void Start()
 	{
         recycleButton = transform.GetChild(1).gameObject;
 		scoreCounter = FindObjectOfType<ScoreCounter>();
 		materialCounter = FindObjectOfType<MaterialCounter>();
+		paperMiniGame = paperMiniGameObject.GetComponent<PaperFactoryMiniGame>();
 	}
     
     // Update is called once per frame
@@ -49,6 +53,7 @@ public class Factory : MonoBehaviour
                     //set it to innactive but dont destroy it, used for regenerating the item afterwards
                     itemToBeRecycled.gameObject.SetActive(false);
                     itemsRecycled++;
+					
                 }
                 else
                 {
@@ -60,31 +65,41 @@ public class Factory : MonoBehaviour
         //if its full just enable the button for recycling
         else
         {
-            recycleButton.SetActive(true);
+			if(factoryType == 1)
+			{
+				
+				if (paperMiniGame.IsPaperWashed())
+				{
+					recycleButton.SetActive(true);
+					
+					paperMiniGameObject.SetActive(false);
+					
+				}
+				else
+				{
+					paperMiniGame.gameObject.SetActive(true);
+				}
+			}
+			else
+			{
+				recycleButton.SetActive(true);
+			}
+           
         }
     }
 
-    public void AddScore()
+    public void AddScoreAndMaterials()
     {
-        scoreCounter.IncreaseTheScore(scoreAmount);
-        itemsRecycled = 0;
-        recycleButton.SetActive(false);
+		scoreCounter.IncreaseTheScore(scoreAmount);
+		materialCounter.IncreaseMaterials(materialAmount);
+		itemsRecycled = 0;
+		recycleButton.SetActive(false);
     }
 
     public bool CompareWithReceivedItem(RecycleItem recycleItem)
     {
         ///This also works as a shortcut
         return recycleItem.itemType == factoryType;
-        
-        //TODO: take a look at this
-        //if ()
-        //{
-        //    return true;
-        //}
-        //else
-        //{
-        //    return false; 
-        //}
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -92,7 +107,7 @@ public class Factory : MonoBehaviour
         if (collision.gameObject.tag == "recycleItem")
         {
             itemToBeRecycled = collision.gameObject.GetComponent<RecycleItem>();
-            Debug.Log("Collided");
+            
         }
     }
 
@@ -101,7 +116,7 @@ public class Factory : MonoBehaviour
         if (collision.gameObject.tag == "recycleItem")
         {
             itemToBeRecycled = collision.gameObject.GetComponent<RecycleItem>();
-            Debug.Log("Collided");
+          
         }
     }
 

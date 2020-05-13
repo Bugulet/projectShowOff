@@ -34,25 +34,17 @@ public class UpgradeManager : MonoBehaviour
 			EnableUpgradeButton();
 		}
     }
+
 	private void EnableUpgradeButton()
 	{
-
-		for (int i = 0; i < buttonIsHidden.Length; i++)
-		{
-			if (buttonIsHidden[i])
-			{
-				return;
-			}
-			else
-			{
-				MacroUpgradeButton.SetActive(true);
-			}
-		}
+		MacroUpgradeButton.SetActive(true);
 	}
+
 	private void DisableUpgradeButton()
 	{
 		MacroUpgradeButton.SetActive(false);
 	}
+
 	public void UpgradeButtonPressed()
 	{
 		if (MacroUpgradeButton == null)
@@ -68,11 +60,13 @@ public class UpgradeManager : MonoBehaviour
 			}
 		}
 	}
-	private void DisableButtonAtIndex(int index)
+
+	private void DisableAndRemoveButtonAtIndex(int index)
 	{
 		ObjectUpgradeButtons[index].SetActive(false);
 		buttonIsHidden[index] = true;
 	}
+
 	private void DisableAllButtons()
 	{
 		for (int i = 0; i < ObjectUpgradeButtons.Count; ++i)
@@ -90,7 +84,7 @@ public class UpgradeManager : MonoBehaviour
 		BuildingCreatedAfterUpgrade.SetActive(true);
 		materialCounter.DecreaseMaterials(2);
 		
-		DisableButtonAtIndex(1);
+		DisableAndRemoveButtonAtIndex(1);
 		DisableAllButtons();
 		DisableUpgradeButton();
 	}
@@ -104,7 +98,7 @@ public class UpgradeManager : MonoBehaviour
 		BuildingCreatedAfterUpgrade2.SetActive(true);
 		materialCounter.DecreaseMaterials(2);
 
-		DisableButtonAtIndex(2);
+		DisableAndRemoveButtonAtIndex(2);
 		DisableAllButtons();
 		DisableUpgradeButton();
 	}
@@ -118,7 +112,7 @@ public class UpgradeManager : MonoBehaviour
 		TreesForEmptySpaceUpgrade.SetActive(true);
 		materialCounter.DecreaseMaterials(2);
 
-		DisableButtonAtIndex(3);
+		DisableAndRemoveButtonAtIndex(3);
 		DisableAllButtons();
 		DisableUpgradeButton();
 	}
@@ -132,11 +126,9 @@ public class UpgradeManager : MonoBehaviour
 		garbageTruck.rechargeTime = 3;
 		materialCounter.DecreaseMaterials(2);
 
-		DisableButtonAtIndex(0);
+		DisableAndRemoveButtonAtIndex(0);
 		DisableAllButtons();
 		DisableUpgradeButton();
 	}
-	
-
 
 }
