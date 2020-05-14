@@ -6,11 +6,18 @@ using UnityEngine.UI;
 public class PaperFactoryMiniGame : MonoBehaviour
 {
 	private int tapCounter = 0;
+
+    [Tooltip("The times you click to recycle.")]
+    [Range(1, 10)]
+    [SerializeField]
+    private int clickTreshold;
 	
 	public GameObject PanelToWash;
 
 	private Image paperToWash;
-	[SerializeField]
+	[SerializeField] 
+    
+
 	private float greyLevel = 0.2f;
     void Start()
     {
@@ -29,14 +36,7 @@ public class PaperFactoryMiniGame : MonoBehaviour
 	}
 	public bool IsPaperWashed()
 	{
-		if(tapCounter >= 10)
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
+        return tapCounter >= clickTreshold;
 	}
 	public void ResetMiniGame()
 	{

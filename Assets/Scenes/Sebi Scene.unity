@@ -1068,6 +1068,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3e52098a48bcda4790dca0dc0344756, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clickTreshold: 3
   PanelToWash: {fileID: 366839101}
   greyLevel: 0.2
 --- !u!114 &366839104
