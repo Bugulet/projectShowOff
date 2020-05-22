@@ -31,6 +31,6 @@ public class EnvironmentManager : MonoBehaviour
 		{
 			Trees.SetActive(true);
 		}
-		print("PaperFactory: " + PaperFactory.itemsRecycled);
+		//print("PaperFactory: " + PaperFactory.itemsRecycled);
 	}
 }
