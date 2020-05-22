@@ -25,7 +25,7 @@ public class FactoryTrashCanUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //print(parentFactory.itemsRecycled);
+        print(parentFactory.itemsRecycled);
         blackMask.localPosition = new Vector3(0, (spriteHeight / parentFactory.recycledItemsThreshold) * parentFactory.itemsRecycled);
     }
 }
