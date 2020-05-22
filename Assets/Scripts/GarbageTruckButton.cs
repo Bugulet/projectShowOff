@@ -35,6 +35,12 @@ public class GarbageTruckButton : MonoBehaviour
         {
             innerText.text = "Ready, captain!";
         }
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            ForceRefreshTrash();
+        }
+
     }
 
     public void ReplenishTrash()
@@ -46,6 +52,15 @@ public class GarbageTruckButton : MonoBehaviour
                 trashPanel.transform.GetChild(i).gameObject.transform.GetChild(0).gameObject.SetActive(true);
             }
             timeRemaining = 0;
+        }
+    }
+
+    public void ForceRefreshTrash()
+    {
+        for (int i = 0; i < trashPanel.transform.childCount; i++)
+        {
+            trashPanel.transform.GetChild(i).gameObject.transform.GetChild(0).gameObject.SetActive(false);
+            trashPanel.transform.GetChild(i).gameObject.transform.GetChild(0).gameObject.SetActive(true);
         }
     }
 }

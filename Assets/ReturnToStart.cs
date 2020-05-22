@@ -28,7 +28,6 @@ public class ReturnToStart : MonoBehaviour
     void Update()
     {
         counter += Time.deltaTime;
-        print(counter);
         
         if(ResetTime>0 && counter >= ResetTime)
         {
