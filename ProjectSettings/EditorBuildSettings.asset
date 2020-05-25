@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/EndScene.unity
     guid: 326413acbc54a2a419721253dece648d
+  - enabled: 1
+    path: Assets/Scenes/MihaiScene3.unity
+    guid: d98e0eb7ed5ead7409bb706ac186679d
   m_configObjects: {}

@@ -17,7 +17,7 @@ public class SceneChanger : MonoBehaviour
 
     public static void GoToGame()
     {
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(4);
     }
 
     public static void GoToEnd()
