@@ -19,7 +19,7 @@ public class Factory : MonoBehaviour
     private int scoreAmount = 1;
 
     [SerializeField]
-	private int materialAmount = 1;
+    private int materialAmount = 1;
 
     [SerializeField]
     private int factoryType;
@@ -28,17 +28,19 @@ public class Factory : MonoBehaviour
     private MaterialCounter materialCounter;
     private GameObject recycleButton;
 
-	public GameObject paperMiniGameObject;
-	private PaperFactoryMiniGame paperMiniGame;
+    [SerializeField]
+    private GameObject MiniGameObject;
 
-	void Start()
-	{
+    private MinigameInterface MiniGame;
+
+    private void Start()
+    {
         recycleButton = transform.GetChild(1).gameObject;
-		scoreCounter = FindObjectOfType<ScoreCounter>();
-		materialCounter = FindObjectOfType<MaterialCounter>();
-		paperMiniGame = paperMiniGameObject.GetComponent<PaperFactoryMiniGame>();
-	}
-    
+        scoreCounter = FindObjectOfType<ScoreCounter>();
+        materialCounter = FindObjectOfType<MaterialCounter>();
+        MiniGame = MiniGameObject.GetComponent<MinigameInterface>();
+    }
+
     // Update is called once per frame
     private void Update()
     {
@@ -53,7 +55,6 @@ public class Factory : MonoBehaviour
                     //set it to innactive but dont destroy it, used for regenerating the item afterwards
                     itemToBeRecycled.gameObject.SetActive(false);
                     itemsRecycled++;
-					
                 }
                 else
                 {
@@ -65,35 +66,24 @@ public class Factory : MonoBehaviour
         //if its full just enable the button for recycling
         else
         {
-			if(factoryType == 1)
-			{
-				
-				if (paperMiniGame.IsPaperWashed())
-				{
-					recycleButton.SetActive(true);
-					
-					paperMiniGameObject.SetActive(false);
-					
-				}
-				else
-				{
-					paperMiniGame.gameObject.SetActive(true);
-				}
-			}
-			else
-			{
-				recycleButton.SetActive(true);
-			}
-           
+            if (MiniGame.IsMinigameFinished())
+            {
+                recycleButton.SetActive(true);
+                MiniGameObject.SetActive(false);
+            }
+            else
+            {
+                MiniGameObject.SetActive(true);
+            }
         }
     }
 
     public void AddScoreAndMaterials()
     {
-		scoreCounter.IncreaseTheScore(scoreAmount);
-		materialCounter.IncreaseMaterials(materialAmount);
-		itemsRecycled = 0;
-		recycleButton.SetActive(false);
+        scoreCounter.IncreaseTheScore(scoreAmount);
+        materialCounter.IncreaseMaterials(materialAmount);
+        itemsRecycled = 0;
+        recycleButton.SetActive(false);
     }
 
     public bool CompareWithReceivedItem(RecycleItem recycleItem)
@@ -107,17 +97,6 @@ public class Factory : MonoBehaviour
         if (collision.gameObject.tag == "recycleItem")
         {
             itemToBeRecycled = collision.gameObject.GetComponent<RecycleItem>();
-            
         }
     }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.tag == "recycleItem")
-        {
-            itemToBeRecycled = collision.gameObject.GetComponent<RecycleItem>();
-          
-        }
-    }
-
 }

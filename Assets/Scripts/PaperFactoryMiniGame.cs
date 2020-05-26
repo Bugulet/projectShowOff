@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PaperFactoryMiniGame : MonoBehaviour
+public class PaperFactoryMiniGame : MonoBehaviour , MinigameInterface
 {
 	private int tapCounter = 0;
 
@@ -25,24 +25,27 @@ public class PaperFactoryMiniGame : MonoBehaviour
 		paperToWash.color = new Color(greyLevel, greyLevel, greyLevel, 1.0f);
 
 	}
+
 	private void Update()
 	{
 		paperToWash.color = new Color(greyLevel, greyLevel, greyLevel, 1.0f);
 	}
+
 	public void WashPaper()
 	{
 		tapCounter++;
 		greyLevel+= 0.1f;
 	}
-	public bool IsPaperWashed()
-	{
-        return tapCounter >= clickTreshold;
-	}
+
 	public void ResetMiniGame()
 	{
 		greyLevel = 0.2f;
 		paperToWash.color = new Color(greyLevel, greyLevel, greyLevel, 1.0f);
 		tapCounter = 0;
-		
 	}
+
+    public bool IsMinigameFinished()
+    {
+        return tapCounter >= clickTreshold;
+    }
 }
