@@ -8,18 +8,26 @@ public class ScoreCounter : MonoBehaviour
 {
 
     [SerializeField]
-    Text scoreText;
+	private Text scoreText;
+	[SerializeField]
+	private Text positiveFeedbackText;
+	[SerializeField]
+	private Text negativeFeedbackText;
 
+	private Text InstanceHolder;
+	private Canvas canvas;
+	
     public int Score { get; private set; }
 	
 	void Start()
     {
 		Score = 0;
+		canvas = FindObjectOfType<Canvas>();
     }
     // Update is called once per frame
     void Update()
     {
-        
+		
     }
 
     private void updateScoreText()
@@ -29,12 +37,34 @@ public class ScoreCounter : MonoBehaviour
 
 	public void IncreaseTheScore(int amountToAdd)
 	{
+		InstanceHolder = Instantiate(positiveFeedbackText, Input.mousePosition, Quaternion.identity, canvas.transform);
+		
 		Score += amountToAdd;
         updateScoreText();
+		StartCoroutine(ChangeTextColorGreen());
+		
+		
 	}
 	public void DecreaseTheScore(int amountToAdd)
 	{
+		InstanceHolder = Instantiate(negativeFeedbackText, Input.mousePosition, Quaternion.identity, canvas.transform);
+		
 		Score -= amountToAdd;
         updateScoreText();
+		StartCoroutine(ChangeTextColorRed());
+		
     }
+	IEnumerator ChangeTextColorGreen()
+	{
+		scoreText.color = Color.green;
+		yield return new WaitForSeconds(3);
+		scoreText.color = Color.white;
+	}
+	IEnumerator ChangeTextColorRed()
+	{
+		scoreText.color = Color.red;
+		yield return new WaitForSeconds(3);
+		scoreText.color = Color.white;
+	}
+
 }
