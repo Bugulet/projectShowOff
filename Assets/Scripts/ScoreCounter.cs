@@ -4,6 +4,7 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 
+
 public class ScoreCounter : MonoBehaviour
 {
 
@@ -38,7 +39,7 @@ public class ScoreCounter : MonoBehaviour
 	public void IncreaseTheScore(int amountToAdd)
 	{
 		InstanceHolder = Instantiate(positiveFeedbackText, Input.mousePosition, Quaternion.identity, canvas.transform);
-		
+        InstanceHolder.GetComponent<Text>().text = "+" + amountToAdd + " score";
 		Score += amountToAdd;
         updateScoreText();
 		StartCoroutine(ChangeTextColorGreen());
@@ -48,8 +49,8 @@ public class ScoreCounter : MonoBehaviour
 	public void DecreaseTheScore(int amountToAdd)
 	{
 		InstanceHolder = Instantiate(negativeFeedbackText, Input.mousePosition, Quaternion.identity, canvas.transform);
-		
-		Score -= amountToAdd;
+        InstanceHolder.GetComponent<Text>().text = "-" + amountToAdd + " score";
+        Score -= amountToAdd;
         updateScoreText();
 		StartCoroutine(ChangeTextColorRed());
 		

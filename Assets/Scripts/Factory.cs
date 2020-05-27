@@ -53,11 +53,15 @@ public class Factory : MonoBehaviour
                 if (CompareWithReceivedItem(itemToBeRecycled))
                 {
                     //set it to innactive but dont destroy it, used for regenerating the item afterwards
+                    scoreCounter.IncreaseTheScore(scoreAmount);
                     itemToBeRecycled.gameObject.SetActive(false);
                     itemsRecycled++;
+                    FindObjectOfType<SoundEffects>().PlayGoodSound();
+
                 }
                 else
                 {
+                    FindObjectOfType<SoundEffects>().PlayBadSound();
                     scoreCounter.DecreaseTheScore(scoreAmount);
                 }
                 itemToBeRecycled = null;
@@ -80,11 +84,13 @@ public class Factory : MonoBehaviour
 
     public void AddScoreAndMaterials()
     {
-        scoreCounter.IncreaseTheScore(scoreAmount);
+        scoreCounter.IncreaseTheScore(scoreAmount*5);
         materialCounter.IncreaseMaterials(materialAmount);
         itemsRecycled = 0;
         recycleButton.SetActive(false);
     }
+
+
 
     public bool CompareWithReceivedItem(RecycleItem recycleItem)
     {
@@ -97,6 +103,14 @@ public class Factory : MonoBehaviour
         if (collision.gameObject.tag == "recycleItem")
         {
             itemToBeRecycled = collision.gameObject.GetComponent<RecycleItem>();
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "recycleItem")
+        {
+            itemToBeRecycled = null;
         }
     }
 }

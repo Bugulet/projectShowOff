@@ -25,10 +25,8 @@ public class UpgradesGetScoreOverTIme : MonoBehaviour
 	void Update()
 	{
 		counter -= Time.deltaTime;
-		print(counter);
 		if(counter <= 0)
 		{
-			
 			CollectScoreButton.SetActive(true);
 		}
 	}

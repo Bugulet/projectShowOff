@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 681403556772809088}
   - component: {fileID: 2232231698193246528}
-  - component: {fileID: 4382156908178927598}
-  - component: {fileID: -5873018357892428354}
+  - component: {fileID: 6173677509323804262}
+  - component: {fileID: 3905896481676086715}
   m_Layer: 5
   m_Name: PositiveFeedback
   m_TagString: Untagged
@@ -35,8 +35,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -34.19, y: -127.34}
-  m_SizeDelta: {x: 60.02, y: 18.369}
+  m_AnchoredPosition: {x: -16.2, y: -139.5}
+  m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2232231698193246528
 CanvasRenderer:
@@ -46,7 +46,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2091568764700509091}
   m_CullTransparentMesh: 0
---- !u!114 &4382156908178927598
+--- !u!114 &6173677509323804262
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -59,26 +59,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.07609467, g: 0.8490566, b: 0.093070775, a: 1}
-  m_RaycastTarget: 1
+  m_Color: {r: 0.043376923, g: 1, b: 0, a: 1}
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
-    m_FontStyle: 0
+    m_FontSize: 30
+    m_FontStyle: 1
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 3
     m_MaxSize: 40
-    m_Alignment: 0
+    m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: +1 Score
---- !u!114 &-5873018357892428354
+  m_Text: sefsefsef
+--- !u!114 &3905896481676086715
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -87,6 +87,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2091568764700509091}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b51c2964093a2f149b09e098f217dca1, type: 3}
+  m_Script: {fileID: 11500000, guid: 763de35f4a0492144a8bde513ec67d4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rescaleSpeed: 2
