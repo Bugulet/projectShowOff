@@ -5,7 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class SceneChanger : MonoBehaviour
 {
-    public static void GoToStart()
+	
+	
+	
+	public static void GoToStart()
     {
         SceneManager.LoadScene(0);
     }
@@ -22,7 +25,9 @@ public class SceneChanger : MonoBehaviour
 
     public static void GoToEnd()
     {
-        SceneManager.LoadScene(3);
+		
+		SceneManager.LoadScene(3);
+		
     }
 
     public void GoToGameWrapper()

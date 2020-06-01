@@ -17,6 +17,8 @@ public class ScoreCounter : MonoBehaviour
 
 	private Text InstanceHolder;
 	private Canvas canvas;
+
+
 	
     public int Score { get; private set; }
 	
@@ -43,8 +45,8 @@ public class ScoreCounter : MonoBehaviour
 		Score += amountToAdd;
         updateScoreText();
 		StartCoroutine(ChangeTextColorGreen());
-		
-		
+
+		PlayerPrefs.SetInt("score", Score);
 	}
 	public void DecreaseTheScore(int amountToAdd)
 	{
@@ -53,6 +55,7 @@ public class ScoreCounter : MonoBehaviour
         Score -= amountToAdd;
         updateScoreText();
 		StartCoroutine(ChangeTextColorRed());
+		PlayerPrefs.SetInt("score", Score);
 		
     }
 	IEnumerator ChangeTextColorGreen()
