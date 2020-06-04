@@ -10,15 +10,16 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Image))]
 public class AnimateUi : MonoBehaviour
 {
-	[SerializeField] private SpriteAtlas spriteSheet;
+	
 
-	private Sprite[] sprites;
+	
 	private Image image;
+
+	public Sprite[] SpriteSheet;
 
 	private void Awake()
 	{
-		sprites = new Sprite[spriteSheet.spriteCount];
-		spriteSheet.GetSprites(sprites);
+		
 
 		image = GetComponent<Image>();
 		image.preserveAspect = true;
@@ -30,11 +31,11 @@ public class AnimateUi : MonoBehaviour
 
 		while (true)
 		{
-			image.sprite = sprites[currentSpriteIndex];
+			image.sprite = SpriteSheet[currentSpriteIndex];
 
-			yield return new WaitForSecondsRealtime(0.1f);
+			yield return new WaitForSeconds(0.07f);
 
-			currentSpriteIndex = (currentSpriteIndex + 1) % sprites.Length;
+			currentSpriteIndex = (currentSpriteIndex + 1) % SpriteSheet.Length;
 
 			StartCoroutine(CloseAnimation());
 		}
@@ -48,7 +49,7 @@ public class AnimateUi : MonoBehaviour
 
 	public IEnumerator CloseAnimation()
 	{
-		yield return new WaitForSeconds(2.0f);
+		yield return new WaitForSeconds(2.5f);
 
 		this.gameObject.SetActive(false);
 	}
