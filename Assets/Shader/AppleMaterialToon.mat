@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-3244450695761276773
+--- !u!114 &-7609432989012549816
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: celltoonTest
+  m_Name: AppleMaterialToon
   m_Shader: {fileID: -6465566751694194690, guid: 2a4387d3d01d29849a36dcfbb866a2a9,
     type: 3}
   m_ShaderKeywords: 
@@ -34,7 +34,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - Texture2D_7C710FCA:
-        m_Texture: {fileID: 2800000, guid: 21c4ed6623d724349afc5be2604ba7e9, type: 3}
+        m_Texture: {fileID: 2800000, guid: dc469a9f2ea42c14582181ef2da461f8, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BaseMap:
@@ -66,10 +66,10 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Vector1_49390A47: 0.26
-    - Vector1_5CC09950: 0.496
-    - Vector1_BB5C9FD1: 0.128
-    - Vector1_BD39E16E: 0.262
+    - Vector1_49390A47: 0.131
+    - Vector1_5CC09950: 0.314
+    - Vector1_BB5C9FD1: 0.17
+    - Vector1_BD39E16E: 0.28
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -92,8 +92,8 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - Color_98117C41: {r: 0.16464934, g: 0.9433962, b: 0.9364162, a: 0}
-    - Color_D83D44FB: {r: 0.7169812, g: 0.23335709, b: 0.6692795, a: 0}
+    - Color_98117C41: {r: 0.8584906, g: 0.57123977, b: 0.22272164, a: 0}
+    - Color_D83D44FB: {r: 0.8301887, g: 0.5641868, b: 0.20754717, a: 0}
     - _BaseColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
