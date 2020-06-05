@@ -16,6 +16,10 @@ public class EndGameDisplayScore : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            PlayerPrefs.SetInt("score", Random.Range(0, 150));
+            scoreText.text = "Scorul tau este: " + PlayerPrefs.GetInt("score").ToString();
+        }
     }
 }
