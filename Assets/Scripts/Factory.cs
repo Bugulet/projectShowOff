@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Factory : MonoBehaviour
 {
     public GameObject[] EnvironmentTrash;
@@ -30,6 +31,9 @@ public class Factory : MonoBehaviour
 
     [SerializeField]
     private GameObject MiniGameObject;
+
+    [SerializeField]
+    private GameObject textFeedback;
 
     private MinigameInterface MiniGame;
 
@@ -102,7 +106,14 @@ public class Factory : MonoBehaviour
     {
         if (collision.gameObject.tag == "recycleItem")
         {
-            itemToBeRecycled = collision.gameObject.GetComponent<RecycleItem>();
+            if (itemsRecycled < recycledItemsThreshold)
+            {
+                itemToBeRecycled = collision.gameObject.GetComponent<RecycleItem>();
+            }
+            else
+            {
+                //TODO: add factory feedback
+            }
         }
     }
 
