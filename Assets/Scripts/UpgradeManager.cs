@@ -17,6 +17,7 @@ public class UpgradeManager : MonoBehaviour
 	public GameObject BuildingCreatedAfterUpgrade2;
 
 	private GarbageTruckButton garbageTruck;
+	private GameTimer gameTimer;
 
     private float timer = 0;
 
@@ -26,6 +27,7 @@ public class UpgradeManager : MonoBehaviour
 		materialCounter = FindObjectOfType<MaterialCounter>();
 		buttonIsHidden = new bool[ObjectUpgradeButtons.Count];
 		garbageTruck = FindObjectOfType<GarbageTruckButton>();
+		gameTimer = FindObjectOfType<GameTimer>();
     }
 
     // Update is called once per frame
@@ -45,6 +47,10 @@ public class UpgradeManager : MonoBehaviour
         {
             GoToEnd();
         }
+		if(gameTimer.TimerCount < 0)
+		{
+			SceneChanger.GoToEnd();
+		}
     }
 
 	private void EnableUpgradeButton()
@@ -118,8 +124,8 @@ public class UpgradeManager : MonoBehaviour
 
 	public void CreateForestButtonPressed()
 	{
-        print("SCRIE");
-        Invoke("GoToEnd", 2.0f);
+       
+        
 
         if (MacroUpgradeButton == null)
 		{

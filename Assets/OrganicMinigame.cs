@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class OrganicMinigame : MonoBehaviour , MinigameInterface
 {
     private GameObject pistonObject;
     private GameObject trashObject;
+	public GameObject AnimationPanel;
 
     [SerializeField]
     private int scoreThreshold = 3;
@@ -33,11 +35,12 @@ public class OrganicMinigame : MonoBehaviour , MinigameInterface
     // Update is called once per frame
     void LateUpdate()
     {
-        
-        if(pistonObject.GetComponent<CompareCollision>().HasCollidedWithObject())
+		if (pistonObject.GetComponent<CompareCollision>().HasCollidedWithObject())
         {
-            score++;
+			
+			score++;
             trashObject.transform.localScale = new Vector3(trashObject.transform.localScale.x, trashObject.transform.localScale.y/1.2f);
+			
         }
 
         pistonObject.transform.localPosition = new Vector3(0, Mathf.Max(Mathf.Min(80, pistonObject.transform.localPosition.y), 30), 0);
@@ -48,12 +51,15 @@ public class OrganicMinigame : MonoBehaviour , MinigameInterface
     {
         if (score >= scoreThreshold)
         {
-            return true;
+			
+			return true;
+			
         }
         else
         {
             return false;
         }
     }
+	
     
 }
