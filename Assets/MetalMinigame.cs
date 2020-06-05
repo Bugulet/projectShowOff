@@ -2,21 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MetalMinigame : MonoBehaviour , MinigameInterface
+public class MetalMinigame : MonoBehaviour, MinigameInterface
 {
     [SerializeField]
     private int RotationThreshold = 3;
-
-    GameObject wheelOne, wheelTwo;
-
-    bool angleIsNegative = false;
+    private GameObject wheelOne, wheelTwo;
+    private bool angleIsNegative = false;
 
     private int rotations = 0;
+
+    private bool isTouching = false;
 
     public bool IsMinigameFinished()
     {
         //TODO: change this 
-        return rotations>RotationThreshold;
+        return rotations > RotationThreshold;
     }
 
     public void ResetGame()
@@ -26,16 +26,27 @@ public class MetalMinigame : MonoBehaviour , MinigameInterface
     }
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         wheelOne = transform.GetChild(0).gameObject;
         wheelTwo = transform.GetChild(1).gameObject;
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        if (Lean.Touch.LeanTouch.Fingers.Count > 0)
+        if (Lean.Touch.LeanTouch.Fingers.Count > 0 && 
+            RectTransformUtility.RectangleContainsScreenPoint(GetComponent<RectTransform>(),Lean.Touch.LeanTouch.Fingers[0].ScreenPosition) && Globals.isGrabbingTrash==false)
+        {
+            isTouching = true;
+        }
+
+        if (Lean.Touch.LeanTouch.Fingers.Count == 0)
+        {
+            isTouching = false;
+        }
+
+        if (isTouching)
         {
             Vector2 targetPosition = Lean.Touch.LeanTouch.Fingers[0].ScreenPosition;
             Vector2 direction = new Vector2(targetPosition.x - transform.position.x, targetPosition.y - transform.position.y);
@@ -43,7 +54,7 @@ public class MetalMinigame : MonoBehaviour , MinigameInterface
             wheelOne.transform.eulerAngles = new Vector3(0, 0, rotation);
             wheelTwo.transform.eulerAngles = new Vector3(0, 0, -rotation);
 
-            if(rotation>0 && angleIsNegative == true)
+            if (rotation > 0 && angleIsNegative == true)
             {
                 angleIsNegative = false;
                 rotations++;
@@ -54,7 +65,12 @@ public class MetalMinigame : MonoBehaviour , MinigameInterface
                 angleIsNegative = true;
             }
 
-            print(rotations + "    "+ rotation+"   "+ angleIsNegative);
+            print(rotations + "    " + rotation + "   " + angleIsNegative);
         }
+    }
+
+    private void LeanTouch_OnFingerUp(Lean.Touch.LeanFinger obj)
+    {
+        throw new System.NotImplementedException();
     }
 }

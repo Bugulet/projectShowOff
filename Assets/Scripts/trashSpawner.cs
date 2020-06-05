@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class trashSpawner : MonoBehaviour
 {
@@ -15,9 +16,19 @@ public class trashSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (trashItem!=null && !trashItem.GetComponent<Lean.Touch.LeanSelectable>().IsSelected)
+        if (trashItem != null && !trashItem.GetComponent<Lean.Touch.LeanSelectable>().IsSelected)
         {
             trashItem.transform.localPosition = new Vector3(0, 0, 0);
+        }
+
+        if (trashItem.GetComponent<Lean.Touch.LeanSelectable>().IsSelected)
+        {
+            Globals.isGrabbingTrash = true;
+        }
+
+        if (Lean.Touch.LeanTouch.Fingers.Count == 0)
+        {
+            Globals.isGrabbingTrash = false;
         }
     }
 }
