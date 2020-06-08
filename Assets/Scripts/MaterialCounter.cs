@@ -18,7 +18,10 @@ public class MaterialCounter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-		
+		if (Input.GetKeyDown(KeyCode.F))
+		{
+			IncreaseMaterials(1);
+		}
     }
 
 	private void UpdateMaterialText()
