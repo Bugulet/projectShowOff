@@ -15,6 +15,7 @@ public class AnimateUi : MonoBehaviour
 	
 	private Image image;
 
+	public float endAnimationTime;
 	public Sprite[] SpriteSheet;
 
 	private void Awake()
@@ -49,7 +50,7 @@ public class AnimateUi : MonoBehaviour
 
 	public IEnumerator CloseAnimation()
 	{
-		yield return new WaitForSeconds(2.5f);
+		yield return new WaitForSeconds(endAnimationTime);
 
 		this.gameObject.SetActive(false);
 	}

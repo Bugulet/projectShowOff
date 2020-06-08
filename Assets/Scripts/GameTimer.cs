@@ -17,6 +17,6 @@ public class GameTimer : MonoBehaviour
     void Update()
     {
 		TimerCount -= Time.deltaTime;
-		TimerText.text = ($"The time left is: {TimerCount.ToString("F0")}");
+		TimerText.text = ($" {TimerCount.ToString("F0")}");
     }
 }
