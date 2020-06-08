@@ -10,13 +10,16 @@ public class FactoryTrashCanUI : MonoBehaviour
     Factory parentFactory;
 
     Transform blackMask;
+    Image filledBar;
 
-    float spriteHeight;
+    float spriteHeight,spriteWidth;
 
     // Start is called before the first frame update
     void Start()
     {
+        filledBar = transform.GetChild(0).GetComponent<Image>();
         spriteHeight = GetComponent<RectTransform>().rect.size.y;
+        spriteWidth = GetComponent<RectTransform>().rect.size.x;
 
         blackMask = transform.GetChild(0);
         startPosition = new Vector2(transform.localPosition.x, transform.localPosition.y);
@@ -27,6 +30,6 @@ public class FactoryTrashCanUI : MonoBehaviour
     void Update()
     {
         //print(parentFactory.itemsRecycled);
-        blackMask.localPosition = new Vector3(0, (spriteHeight / parentFactory.recycledItemsThreshold) * parentFactory.itemsRecycled);
+        filledBar.fillAmount=(float) parentFactory.itemsRecycled / parentFactory.recycledItemsThreshold;
     }
 }

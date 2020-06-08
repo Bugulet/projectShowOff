@@ -6,30 +6,28 @@ using UnityEngine.UI;
 public class GarbageTruckButton : MonoBehaviour
 {
     [SerializeField]
-    GameObject trashPanel;
+    private GameObject trashPanel;
 
     [SerializeField]
     [Range(0, 14)]
     public float rechargeTime;
-
-    float timeRemaining;
-
-    Text innerText;
+    private float timeRemaining;
+    private Text innerText;
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        innerText= transform.GetChild(0).gameObject.GetComponent<Text>();
+        innerText = transform.GetChild(0).gameObject.GetComponent<Text>();
         timeRemaining = rechargeTime;
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         timeRemaining += Time.deltaTime;
         if (timeRemaining < rechargeTime)
         {
-            innerText.text = "Time left: " + (int)(rechargeTime- timeRemaining);
+            innerText.text = "Time left: " + (int)(rechargeTime - timeRemaining);
         }
         else
         {
@@ -40,19 +38,15 @@ public class GarbageTruckButton : MonoBehaviour
         {
             ForceRefreshTrash();
         }
-
     }
 
-    public void ReplenishTrash()
+    private void ReplenishTrash()
     {
-        if (timeRemaining > rechargeTime)
+        for (int i = 0; i < trashPanel.transform.childCount; i++)
         {
-            for (int i = 0; i < trashPanel.transform.childCount; i++)
-            {
-                trashPanel.transform.GetChild(i).gameObject.transform.GetChild(0).gameObject.SetActive(true);
-            }
-            timeRemaining = 0;
+            trashPanel.transform.GetChild(i).gameObject.transform.GetChild(0).gameObject.SetActive(true);
         }
+        timeRemaining = 0;
     }
 
     public void ForceRefreshTrash()
@@ -64,31 +58,26 @@ public class GarbageTruckButton : MonoBehaviour
         }
     }
 
-    public void RechargeNotDone()
+    public void RechargeTruck()
     {
-        if (timeRemaining == rechargeTime)
-        {
-            innerText.color = Color.white;
-        }
-        
-        if (timeRemaining != rechargeTime)
+        if (timeRemaining < rechargeTime)
         {
             StartCoroutine(switchColor());
         }
 
-       
-            
+        if (timeRemaining > rechargeTime)
+        {
+            ReplenishTrash();
+        }
     }
 
     private IEnumerator switchColor()
     {
-
-
         innerText.color = Color.red;
-        
+
         yield return new WaitForSeconds(0.5f);
-        
+
         innerText.color = Color.white;
-        
-    } 
+
+    }
 }
