@@ -63,4 +63,32 @@ public class GarbageTruckButton : MonoBehaviour
             trashPanel.transform.GetChild(i).gameObject.transform.GetChild(0).gameObject.SetActive(true);
         }
     }
+
+    public void RechargeNotDone()
+    {
+        if (timeRemaining == rechargeTime)
+        {
+            innerText.color = Color.white;
+        }
+        
+        if (timeRemaining != rechargeTime)
+        {
+            StartCoroutine(switchColor());
+        }
+
+       
+            
+    }
+
+    private IEnumerator switchColor()
+    {
+
+
+        innerText.color = Color.red;
+        
+        yield return new WaitForSeconds(0.5f);
+        
+        innerText.color = Color.white;
+        
+    } 
 }
