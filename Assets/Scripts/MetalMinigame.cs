@@ -65,7 +65,7 @@ public class MetalMinigame : MonoBehaviour, MinigameInterface
                 angleIsNegative = true;
             }
 
-            print(rotations + "    " + rotation + "   " + angleIsNegative);
+            //print(rotations + "    " + rotation + "   " + angleIsNegative);
         }
     }
 

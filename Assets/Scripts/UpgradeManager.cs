@@ -19,6 +19,10 @@ public class UpgradeManager : MonoBehaviour
 	public GameObject Hospital;
 	public GameObject Macandra;
 	public GameObject RedBlocks;
+	public GameObject BadTiles;
+	public GameObject CleanTiles;
+	public GameObject CleanHouses;
+	public GameObject TrashedHouses;
 
 	public GameObject CollectScoreButton;
 
@@ -46,7 +50,7 @@ public class UpgradeManager : MonoBehaviour
 
         if (timer > 0)
         {
-            print("timer: " + timer);
+           
             timer += Time.deltaTime;
         }
         if (timer > 4)
@@ -181,6 +185,10 @@ public class UpgradeManager : MonoBehaviour
 			return;
 		}
 		Cornfield.SetActive(false);
+		BadTiles.SetActive(false);
+		TrashedHouses.SetActive(false);
+		CleanTiles.SetActive(true);
+		CleanHouses.SetActive(true);
 		materialCounter.DecreaseMaterials(2);
 
 		DisableAndRemoveButtonAtIndex(4);

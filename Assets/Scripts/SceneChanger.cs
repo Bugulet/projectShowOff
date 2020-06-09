@@ -20,6 +20,6 @@ public class SceneChanger : MonoBehaviour
 
     public void GoToTutorialWrapper() { GoToTutorial(); }
 
-    public void GoToScoreboard() { SceneManager.LoadScene(5); }
+    public void GoToScoreboard() { SceneManager.LoadScene(4); }
 
 }

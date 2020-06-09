@@ -31,7 +31,7 @@ public class GarbageTruckButton : MonoBehaviour
         }
         else
         {
-            innerText.text = "Ready, captain!";
+            innerText.text = "Ready!";
         }
 
         if (Input.GetKeyDown(KeyCode.R))
