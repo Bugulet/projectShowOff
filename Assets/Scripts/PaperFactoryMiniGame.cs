@@ -8,7 +8,7 @@ public class PaperFactoryMiniGame : MonoBehaviour , MinigameInterface
 	private int tapCounter = 0;
 
 	public Image image;
-	public Sprite[] buttonSprites;
+	public Sprite[] MinigameSprites;
 
     [Tooltip("The times you click to recycle.")]
     [Range(1, 10)]
@@ -38,16 +38,17 @@ public class PaperFactoryMiniGame : MonoBehaviour , MinigameInterface
 
 	public void WashPaper()
 	{
-		StartCoroutine(refreshButton());
+		//StartCoroutine(refreshButton());
+		image.sprite = MinigameSprites[tapCounter];
 		tapCounter++;
 		//greyLevel+= 0.1f;
+		
+		print(tapCounter);
 		
 	}
 
 	public void ResetMiniGame()
 	{
-		//greyLevel = 0.2f;
-		//paperToWash.color = new Color(greyLevel, greyLevel, greyLevel, 1.0f);
 		tapCounter = 0;
 	}
 
@@ -57,8 +58,8 @@ public class PaperFactoryMiniGame : MonoBehaviour , MinigameInterface
     }
 	private IEnumerator refreshButton()
 	{
-		image.sprite = buttonSprites[1];
+		image.sprite = MinigameSprites[1];
 		yield return new WaitForSeconds(0.3f);
-		image.sprite = buttonSprites[0];
+		image.sprite = MinigameSprites[0];
 	}
 }
