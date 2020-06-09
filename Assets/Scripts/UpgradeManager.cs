@@ -15,6 +15,8 @@ public class UpgradeManager : MonoBehaviour
 	public GameObject TreesForEmptySpaceUpgrade;
 	public GameObject BuildingCreatedAfterUpgrade;
 	public GameObject BuildingCreatedAfterUpgrade2;
+	public GameObject Cornfield;
+	public GameObject Hospital;
 
 	private GarbageTruckButton garbageTruck;
 	private GameTimer gameTimer;
@@ -154,6 +156,33 @@ public class UpgradeManager : MonoBehaviour
 		materialCounter.DecreaseMaterials(2);
 
 		DisableAndRemoveButtonAtIndex(0);
+		DisableAllButtons();
+		DisableUpgradeButton();
+	}
+	public void CreateHospital()
+	{
+
+		if (MacroUpgradeButton == null)
+		{
+			return;
+		}
+		Hospital.SetActive(true);
+		materialCounter.DecreaseMaterials(2);
+
+		DisableAndRemoveButtonAtIndex(5);
+		DisableAllButtons();
+		DisableUpgradeButton();
+	}
+	public void CreateCornfield()
+	{
+		if (MacroUpgradeButton == null)
+		{
+			return;
+		}
+		Cornfield.SetActive(true);
+		materialCounter.DecreaseMaterials(2);
+
+		DisableAndRemoveButtonAtIndex(4);
 		DisableAllButtons();
 		DisableUpgradeButton();
 	}
