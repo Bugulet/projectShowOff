@@ -21739,10 +21739,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 1417814745}
-  buttonSprites:
-  - {fileID: 21300000, guid: 38b9c2e589d287e4bb34efb3b0919984, type: 3}
-  - {fileID: 21300000, guid: 56a934096e9215c4ba7fc12550be9027, type: 3}
-  clickTreshold: 3
+  MinigameSprites:
+  - {fileID: 21300000, guid: 2b5a569288cb9254481644bd991cffdd, type: 3}
+  - {fileID: 21300000, guid: 40f050a20d5fb594ba6920042a0bfc46, type: 3}
+  - {fileID: 21300000, guid: 98762ab765c735843a9a4a40bf7c1f53, type: 3}
+  - {fileID: 21300000, guid: 98762ab765c735843a9a4a40bf7c1f53, type: 3}
+  clickTreshold: 4
   PanelToWash: {fileID: 1417814742}
   greyLevel: 0.2
 --- !u!114 &1417814744
@@ -21775,7 +21777,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 38b9c2e589d287e4bb34efb3b0919984, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2b5a569288cb9254481644bd991cffdd, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -31536,17 +31538,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 2102283692}
-        m_MethodName: PlayAnimation
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &2004446480
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32808,7 +32799,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 0}
-  buttonSprites: []
+  MinigameSprites: []
   clickTreshold: 3
   PanelToWash: {fileID: 2097886634}
   greyLevel: 0.2
@@ -32887,7 +32878,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2102283690
 RectTransform:
   m_ObjectHideFlags: 0

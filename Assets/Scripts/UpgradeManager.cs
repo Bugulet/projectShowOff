@@ -17,6 +17,10 @@ public class UpgradeManager : MonoBehaviour
 	public GameObject BuildingCreatedAfterUpgrade2;
 	public GameObject Cornfield;
 	public GameObject Hospital;
+	public GameObject Macandra;
+	public GameObject RedBlocks;
+
+	public GameObject CollectScoreButton;
 
 	private GarbageTruckButton garbageTruck;
 	private GameTimer gameTimer;
@@ -126,9 +130,6 @@ public class UpgradeManager : MonoBehaviour
 
 	public void CreateForestButtonPressed()
 	{
-       
-        
-
         if (MacroUpgradeButton == null)
 		{
 			return;
@@ -179,12 +180,39 @@ public class UpgradeManager : MonoBehaviour
 		{
 			return;
 		}
-		Cornfield.SetActive(true);
+		Cornfield.SetActive(false);
 		materialCounter.DecreaseMaterials(2);
 
 		DisableAndRemoveButtonAtIndex(4);
 		DisableAllButtons();
 		DisableUpgradeButton();
 	}
+	public void CreateMacandra()
+	{
+		if (MacroUpgradeButton == null)
+		{
+			return;
+		}
+		Macandra.SetActive(true);
+		materialCounter.DecreaseMaterials(2);
+
+		DisableAndRemoveButtonAtIndex(6);
+		DisableAllButtons();
+		DisableUpgradeButton();
+	}
+	public void CreateBlocks()
+	{
+		if (MacroUpgradeButton == null)
+		{
+			return;
+		}
+		RedBlocks.SetActive(true);
+		materialCounter.DecreaseMaterials(2);
+
+		DisableAndRemoveButtonAtIndex(7);
+		DisableAllButtons();
+		DisableUpgradeButton();
+	}
+	
 
 }
