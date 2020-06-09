@@ -43,7 +43,7 @@ public class PaperFactoryMiniGame : MonoBehaviour , MinigameInterface
 		tapCounter++;
 		//greyLevel+= 0.1f;
 		
-		print(tapCounter);
+		
 		
 	}
 

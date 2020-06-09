@@ -4,33 +4,42 @@ using UnityEngine;
 
 public class EnvironmentManager : MonoBehaviour
 {
-	public Factory PlasticFactory;
-	public Factory PaperFactory;
-	public Factory OrganicFactory;
+	public GameObject BadTiles;
+	public GameObject CleanTiles;
+	public GameObject CleanHouses;
+	public GameObject TrashedHouses;
+	public GameObject OtherTrash;
+	public GameObject RecycleStatue;
 
+
+	private ScoreCounter scoreCounter;
 	[SerializeField]
-	private GameObject EnvironmentTrash;
+	private int scoreTresholdForNature;
 	[SerializeField]
-	private GameObject Trees;
+	private int scoreThresholdForStatue;
 
 
-    void Start()
+	void Start()
     {
-        
+		scoreCounter = FindObjectOfType<ScoreCounter>();
     }
 
     // Update is called once per frame
     void Update()
     {
-		
-		if(PlasticFactory.itemsRecycled == 2 || OrganicFactory.itemsRecycled == 2 || PaperFactory.itemsRecycled == 2)
+
+		if(scoreCounter.Score >= scoreTresholdForNature)
 		{
-			EnvironmentTrash.SetActive(false);
+			TrashedHouses.SetActive(false);
+			OtherTrash.SetActive(false);
+			BadTiles.SetActive(false);
+			CleanTiles.SetActive(true);
+			CleanHouses.SetActive(true);
+			
 		}
-		if(PaperFactory.itemsRecycled == 2)
+		if(scoreCounter.Score >= scoreThresholdForStatue)
 		{
-			Trees.SetActive(true);
+			RecycleStatue.SetActive(true);
 		}
-		//print("PaperFactory: " + PaperFactory.itemsRecycled);
 	}
 }
