@@ -26,7 +26,7 @@ public class PaperFactoryMiniGame : MonoBehaviour , MinigameInterface
     {
 		//paperToWash = PanelToWash.GetComponent<Image>();
 		//paperToWash.color = new Color(greyLevel, greyLevel, greyLevel, 1.0f);
-		image.preserveAspect = true;
+		//image.preserveAspect = true;
 		
 
 	}
