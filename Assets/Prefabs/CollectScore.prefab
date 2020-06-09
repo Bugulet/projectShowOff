@@ -28,7 +28,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5413844721573881568}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -67,9 +67,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 78aa41ebe659e754a8e3b0f7ff1fb3fd, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 528b5dfb3d5eb47438afd15e00d7cbd2, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -159,7 +159,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   playType: 3
-  animationTime: 0.5
+  animationTime: 1
   enablePlay: 0
   awakePlay: 1
   lgnoreTimeScale: 1
@@ -207,7 +207,7 @@ MonoBehaviour:
     _maxAnimationTime: 1
     _isLocal: 1
     _fromVector: {x: 1, y: 1, z: 1}
-    _toVector: {x: 1.5, y: 1.5, z: 1.5}
+    _toVector: {x: 1.2, y: 1.2, z: 1.2}
     _fromColor: {r: 1, g: 1, b: 1, a: 1}
     _toColor: {r: 1, g: 1, b: 1, a: 1}
     _fromFloat: 0
@@ -243,8 +243,8 @@ MonoBehaviour:
     _minAnimationTime: 0
     _maxAnimationTime: 1
     _isLocal: 1
-    _fromVector: {x: -0, y: 0, z: 20}
-    _toVector: {x: -0, y: 0, z: -20}
+    _fromVector: {x: -0, y: 0, z: 15}
+    _toVector: {x: -0, y: 0, z: -15}
     _fromColor: {r: 1, g: 1, b: 1, a: 1}
     _toColor: {r: 1, g: 1, b: 1, a: 1}
     _fromFloat: 0
