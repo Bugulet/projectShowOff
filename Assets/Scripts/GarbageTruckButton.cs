@@ -14,13 +14,13 @@ public class GarbageTruckButton : MonoBehaviour
     [Range(0, 14)]
     public float rechargeTime;
     private float timeRemaining;
-    private Text innerText;
+   // private Text innerText;
 
     // Start is called before the first frame update
     private void Start()
     {
 		fillBar = this.GetComponent<Image>();
-        innerText = transform.GetChild(0).gameObject.GetComponent<Text>();
+        //innerText = transform.GetChild(0).gameObject.GetComponent<Text>();
         timeRemaining = rechargeTime;
     }
 
@@ -30,11 +30,11 @@ public class GarbageTruckButton : MonoBehaviour
         timeRemaining += Time.deltaTime;
         if (timeRemaining < rechargeTime)
         {
-            innerText.text = "Time left: " + (int)(rechargeTime - timeRemaining);
+           // innerText.text = "Time left: " + (int)(rechargeTime - timeRemaining);
         }
         else
         {
-            innerText.text = "Ready!";
+           // innerText.text = "Ready!";
         }
 
         if (Input.GetKeyDown(KeyCode.R))
@@ -77,11 +77,11 @@ public class GarbageTruckButton : MonoBehaviour
 
     private IEnumerator switchColor()
     {
-        innerText.color = Color.red;
+        //innerText.color = Color.red;
 
         yield return new WaitForSeconds(0.5f);
 
-        innerText.color = Color.white;
+        //innerText.color = Color.white;
 
     }
 }

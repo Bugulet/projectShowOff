@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5413844721573881574}
   - component: {fileID: 5413844721573881575}
   - component: {fileID: 5413844721573881578}
+  - component: {fileID: 3936157838973933464}
   m_Layer: 5
   m_Name: CollectScore
   m_TagString: Untagged
@@ -67,7 +68,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 528b5dfb3d5eb47438afd15e00d7cbd2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ab04e9abd4f532c419df495897a4d560, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -122,6 +123,17 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 0}
         m_MethodName: CollectScore
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_MethodName: Play
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -250,6 +262,25 @@ MonoBehaviour:
     _fromFloat: 0
     _toFloat: 0
     _bezierCurve: {fileID: 0}
+--- !u!95 &3936157838973933464
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5413844721573881568}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4ea959195db0d944b84b7d330e0f64bf, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &5413844722759691415
 GameObject:
   m_ObjectHideFlags: 0
