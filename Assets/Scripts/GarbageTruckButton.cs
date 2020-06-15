@@ -8,6 +8,8 @@ public class GarbageTruckButton : MonoBehaviour
     [SerializeField]
     private GameObject trashPanel;
 
+	private Image fillBar;
+
     [SerializeField]
     [Range(0, 14)]
     public float rechargeTime;
@@ -17,6 +19,7 @@ public class GarbageTruckButton : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
+		fillBar = this.GetComponent<Image>();
         innerText = transform.GetChild(0).gameObject.GetComponent<Text>();
         timeRemaining = rechargeTime;
     }
@@ -38,6 +41,7 @@ public class GarbageTruckButton : MonoBehaviour
         {
             ForceRefreshTrash();
         }
+		fillBar.fillAmount = timeRemaining / rechargeTime;
     }
 
     private void ReplenishTrash()

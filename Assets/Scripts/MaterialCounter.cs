@@ -5,10 +5,6 @@ using UnityEngine.UI;
 
 public class MaterialCounter : MonoBehaviour
 {
-    
-	[SerializeField]
-	public Text MaterialText;
-
 	public int Materials { get; private set; }
 	void Start()
     {
@@ -23,21 +19,13 @@ public class MaterialCounter : MonoBehaviour
 			IncreaseMaterials(1);
 		}
     }
-
-	private void UpdateMaterialText()
-	{
-		MaterialText.text = "Materials: " + Materials;
-	}
-
 	public void IncreaseMaterials(int materialAmount)
 	{
 		Materials += materialAmount;
-		UpdateMaterialText();
+	
 	}
-
 	public void DecreaseMaterials(int materialAmount)
 	{
-		Materials -= materialAmount;
-		UpdateMaterialText();
+		Materials -= materialAmount;	
 	}
 }

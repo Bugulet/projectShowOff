@@ -7,7 +7,13 @@ public class MetalMinigame : MonoBehaviour, MinigameInterface
     [SerializeField]
     private int RotationThreshold = 3;
     private GameObject wheelOne, wheelTwo;
-    private bool angleIsNegative = false;
+	[SerializeField]
+	private GameObject tutorial;
+	
+	private float waitTimeForTutorial;
+	[SerializeField]
+	private float EditorWaitTimeForTutorial;
+	private bool angleIsNegative = false;
 
     private int rotations = 0;
 
@@ -67,10 +73,18 @@ public class MetalMinigame : MonoBehaviour, MinigameInterface
 
             //print(rotations + "    " + rotation + "   " + angleIsNegative);
         }
+		StartCoroutine(StartTutorial());
     }
 
     private void LeanTouch_OnFingerUp(Lean.Touch.LeanFinger obj)
     {
         throw new System.NotImplementedException();
     }
+	private IEnumerator StartTutorial()
+	{
+		waitTimeForTutorial = EditorWaitTimeForTutorial;
+		yield return new WaitForSeconds(waitTimeForTutorial);
+		tutorial.SetActive(true);
+
+	}
 }

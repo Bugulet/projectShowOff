@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+
 public class UpgradesGetScoreOverTIme : MonoBehaviour
 {
 	private ScoreCounter scoreCounter;
@@ -10,15 +11,18 @@ public class UpgradesGetScoreOverTIme : MonoBehaviour
 	private int scoreToCollect;
 
 	public GameObject CollectScoreButton;
-
+	public Jun_Tween jun_tween;
 	[SerializeField]
 	private float editorCounter;
+	[SerializeField]
+	private float timeUntilButtonDissapears;
 	private float counter;
 	void Start()
 	{
 		scoreCounter = FindObjectOfType<ScoreCounter>();
 		
 		counter = editorCounter;
+		
 	}
 
 	// Update is called once per frame
@@ -29,6 +33,11 @@ public class UpgradesGetScoreOverTIme : MonoBehaviour
 		{
 			CollectScoreButton.SetActive(true);
 		}
+		if(CollectScoreButton.activeSelf == true)
+		{
+			StartCoroutine(DisableButtonIfNotPressedInTime());
+		}
+		
 	}
 	public void CollectScore()
 	{
@@ -38,4 +47,19 @@ public class UpgradesGetScoreOverTIme : MonoBehaviour
 	
 		CollectScoreButton.SetActive(false);
 	}
+	public IEnumerator DisableButtonIfNotPressedInTime()
+	{
+		yield return new WaitForSeconds(timeUntilButtonDissapears);
+		
+
+				
+		counter = editorCounter;
+		
+		
+		
+		CollectScoreButton.SetActive(false);
+
+		
+	}
+	
 }

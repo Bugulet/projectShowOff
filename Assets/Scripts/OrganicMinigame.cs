@@ -8,16 +8,22 @@ public class OrganicMinigame : MonoBehaviour , MinigameInterface
     private GameObject pistonObject;
     private GameObject trashObject;
 	public GameObject AnimationPanel;
+	[SerializeField]
+	private GameObject tutorial;
 
     [SerializeField]
     private int scoreThreshold = 3;
-
+	
     private int score = 0;
 
     private Vector3 smashedScale;
 
-    // Start is called before the first frame update
-    void Start()
+	private float timeBeforeTutorialStarts;
+	[SerializeField]
+	private float EditorTimeBeforeTutorialStarts;
+
+	// Start is called before the first frame update
+	void Start()
     {
         pistonObject = transform.GetChild(0).gameObject;
         trashObject= transform.GetChild(1).gameObject;
@@ -44,6 +50,7 @@ public class OrganicMinigame : MonoBehaviour , MinigameInterface
         }
 
         pistonObject.transform.localPosition = new Vector3(0, Mathf.Max(Mathf.Min(80, pistonObject.transform.localPosition.y), 30), 0);
+		StartCoroutine(StartTutorial());
     }
 
 
@@ -60,6 +67,11 @@ public class OrganicMinigame : MonoBehaviour , MinigameInterface
             return false;
         }
     }
-	
+	private IEnumerator StartTutorial()
+	{
+		timeBeforeTutorialStarts = EditorTimeBeforeTutorialStarts;
+		yield return new WaitForSeconds(timeBeforeTutorialStarts);
+		tutorial.SetActive(true);
+	}
     
 }

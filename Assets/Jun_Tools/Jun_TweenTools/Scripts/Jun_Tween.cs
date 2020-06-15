@@ -23,7 +23,7 @@ public class Jun_Tween
 	[HideInInspector][SerializeField]bool _isLocal = true;
        
 	private bool _isPlaying = false;
-	public bool isPlaying {get{return _isPlaying;}}
+	public bool isPlaying { get { return _isPlaying; }}
 	#endregion
 
 	#region<Vectors>

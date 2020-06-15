@@ -16,35 +16,23 @@ public class PaperFactoryMiniGame : MonoBehaviour , MinigameInterface
     private int clickTreshold;
 	
 	public GameObject PanelToWash;
-
+	[SerializeField]
+	private GameObject tutorial;
+	
+	private float timeBeforeTutorialAppears;
+	[SerializeField]
+	private float EditorTimeBeforeTutorialAppears;
 	private Image paperToWash;
-	[SerializeField] 
-    
-
-	private float greyLevel = 0.2f;
-    void Start()
-    {
-		//paperToWash = PanelToWash.GetComponent<Image>();
-		//paperToWash.color = new Color(greyLevel, greyLevel, greyLevel, 1.0f);
-		//image.preserveAspect = true;
-		
-
-	}
 
 	private void Update()
 	{
-		//paperToWash.color = new Color(greyLevel, greyLevel, greyLevel, 1.0f);
+		StartCoroutine(StartTutorial());
 	}
 
 	public void WashPaper()
 	{
-		//StartCoroutine(refreshButton());
 		image.sprite = MinigameSprites[tapCounter];
 		tapCounter++;
-		//greyLevel+= 0.1f;
-		
-		
-		
 	}
 
 	public void ResetMiniGame()
@@ -61,5 +49,11 @@ public class PaperFactoryMiniGame : MonoBehaviour , MinigameInterface
 		image.sprite = MinigameSprites[1];
 		yield return new WaitForSeconds(0.3f);
 		image.sprite = MinigameSprites[0];
+	}
+	private IEnumerator StartTutorial()
+	{
+		timeBeforeTutorialAppears = EditorTimeBeforeTutorialAppears;
+		yield return new WaitForSeconds(timeBeforeTutorialAppears);
+		tutorial.SetActive(true);
 	}
 }
