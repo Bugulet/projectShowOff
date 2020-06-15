@@ -100,6 +100,10 @@ public class Jun_TweenRuntime : MonoBehaviour
 			return null;
 		}
 	}
+	public Jun_Tween returnTween(int index)
+	{
+		return tweens[index];
+	}
 
 	bool _isPlaying = false;
 	bool _isRewind = false;
