@@ -3628,7 +3628,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: a05f36013b510b84082595dafe7077ac, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3e03cafe770a2c74dab3db4794592542, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -28220,10 +28220,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   image: {fileID: 822620915}
   MinigameSprites:
-  - {fileID: 21300000, guid: 2b5a569288cb9254481644bd991cffdd, type: 3}
-  - {fileID: 21300000, guid: 40f050a20d5fb594ba6920042a0bfc46, type: 3}
-  - {fileID: 21300000, guid: 98762ab765c735843a9a4a40bf7c1f53, type: 3}
-  - {fileID: 21300000, guid: 98762ab765c735843a9a4a40bf7c1f53, type: 3}
+  - {fileID: 21300000, guid: 79fdbad440c1fdd43ab5d3042e1d2ae0, type: 3}
+  - {fileID: 21300000, guid: d6479ee254c80ed46a8f8d601cdf3476, type: 3}
+  - {fileID: 21300000, guid: 507ade08b2696fb46b8dae8a411cbdbe, type: 3}
+  - {fileID: 21300000, guid: 507ade08b2696fb46b8dae8a411cbdbe, type: 3}
   clickTreshold: 4
   PanelToWash: {fileID: 822620912}
   greyLevel: 0.2
@@ -28245,7 +28245,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 2b5a569288cb9254481644bd991cffdd, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 79fdbad440c1fdd43ab5d3042e1d2ae0, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -29493,8 +29493,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -288, y: -68.68}
-  m_SizeDelta: {x: 159.7, y: 140.94}
+  m_AnchoredPosition: {x: -289.6, y: -65.16}
+  m_SizeDelta: {x: 179.74, y: 148.05}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &870683331
 MonoBehaviour:
@@ -33585,8 +33585,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 298, y: -64}
-  m_SizeDelta: {x: 147, y: 150.3}
+  m_AnchoredPosition: {x: 297.44, y: -47.993}
+  m_SizeDelta: {x: 180.08, y: 179.65}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1005570663
 MonoBehaviour:
@@ -53740,7 +53740,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 14.1, y: -3.9999924}
+  m_AnchoredPosition: {x: 12, y: -4}
   m_SizeDelta: {x: 61.2, y: 61.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!61 &1573548072
@@ -53808,7 +53808,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: a05f36013b510b84082595dafe7077ac, type: 3}
+  m_Sprite: {fileID: 21300000, guid: cc995b8008b21164fa9e61acfbbe2bf9, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -54356,8 +54356,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.0000055432, y: 60.5}
-  m_SizeDelta: {x: 59.05, y: 98}
+  m_AnchoredPosition: {x: 0.7, y: 46.9}
+  m_SizeDelta: {x: 83.09, y: 117.28}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!50 &1596886533
 Rigidbody2D:
@@ -54519,14 +54519,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.4433962, g: 0.4433962, b: 0.4433962, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 3a27d28cf2ae06a4db90116a86a05db1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 15650d6910cc52d43acae1d08a895624, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -59864,8 +59864,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -8.2, y: -11}
-  m_SizeDelta: {x: 169.1, y: 156.5}
+  m_AnchoredPosition: {x: -8.2, y: 4.63}
+  m_SizeDelta: {x: 169.1, y: 189.43}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1754943964
 MonoBehaviour:
@@ -65478,7 +65478,6 @@ MonoBehaviour:
   CleanTiles: {fileID: 453289226}
   CleanHouses: {fileID: 1219554933}
   TrashedHouses: {fileID: 1205552003}
-  CollectScoreButton: {fileID: 0}
 --- !u!4 &1911767282
 Transform:
   m_ObjectHideFlags: 0

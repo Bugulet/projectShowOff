@@ -24,7 +24,7 @@ public class UpgradeManager : MonoBehaviour
 	public GameObject CleanHouses;
 	public GameObject TrashedHouses;
 
-	public GameObject CollectScoreButton;
+	
 
 	private GarbageTruckButton garbageTruck;
 	private GameTimer gameTimer;
