@@ -9,9 +9,11 @@ public class MetalMinigame : MonoBehaviour, MinigameInterface
     private GameObject wheelOne, wheelTwo;
 	[SerializeField]
 	private GameObject tutorial;
-	[SerializeField]
+	
 	private float waitTimeForTutorial;
-    private bool angleIsNegative = false;
+	[SerializeField]
+	private float EditorWaitTimeForTutorial;
+	private bool angleIsNegative = false;
 
     private int rotations = 0;
 
@@ -80,6 +82,7 @@ public class MetalMinigame : MonoBehaviour, MinigameInterface
     }
 	private IEnumerator StartTutorial()
 	{
+		waitTimeForTutorial = EditorWaitTimeForTutorial;
 		yield return new WaitForSeconds(waitTimeForTutorial);
 		tutorial.SetActive(true);
 

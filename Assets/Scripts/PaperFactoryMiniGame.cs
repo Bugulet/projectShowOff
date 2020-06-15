@@ -18,8 +18,10 @@ public class PaperFactoryMiniGame : MonoBehaviour , MinigameInterface
 	public GameObject PanelToWash;
 	[SerializeField]
 	private GameObject tutorial;
-	[SerializeField]
+	
 	private float timeBeforeTutorialAppears;
+	[SerializeField]
+	private float EditorTimeBeforeTutorialAppears;
 	private Image paperToWash;
 
 	private void Update()
@@ -50,6 +52,7 @@ public class PaperFactoryMiniGame : MonoBehaviour , MinigameInterface
 	}
 	private IEnumerator StartTutorial()
 	{
+		timeBeforeTutorialAppears = EditorTimeBeforeTutorialAppears;
 		yield return new WaitForSeconds(timeBeforeTutorialAppears);
 		tutorial.SetActive(true);
 	}

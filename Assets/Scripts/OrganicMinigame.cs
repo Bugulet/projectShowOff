@@ -18,8 +18,9 @@ public class OrganicMinigame : MonoBehaviour , MinigameInterface
 
     private Vector3 smashedScale;
 
-	[SerializeField]
 	private float timeBeforeTutorialStarts;
+	[SerializeField]
+	private float EditorTimeBeforeTutorialStarts;
 
 	// Start is called before the first frame update
 	void Start()
@@ -68,6 +69,7 @@ public class OrganicMinigame : MonoBehaviour , MinigameInterface
     }
 	private IEnumerator StartTutorial()
 	{
+		timeBeforeTutorialStarts = EditorTimeBeforeTutorialStarts;
 		yield return new WaitForSeconds(timeBeforeTutorialStarts);
 		tutorial.SetActive(true);
 	}

@@ -12280,7 +12280,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RotationThreshold: 3
   tutorial: {fileID: 0}
-  waitTimeForTutorial: 0
+  EditorWaitTimeForTutorial: 0
 --- !u!222 &370435900
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -17171,7 +17171,7 @@ MonoBehaviour:
   AnimationPanel: {fileID: 0}
   tutorial: {fileID: 0}
   scoreThreshold: 3
-  timeBeforeTutorialStarts: 0
+  EditorTimeBeforeTutorialStarts: 0
 --- !u!114 &499445449
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24369,7 +24369,7 @@ MonoBehaviour:
   clickTreshold: 3
   PanelToWash: {fileID: 728273982}
   tutorial: {fileID: 0}
-  timeBeforeTutorialAppears: 0
+  EditorTimeBeforeTutorialAppears: 0
 --- !u!114 &728273985
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28350,7 +28350,7 @@ MonoBehaviour:
   clickTreshold: 4
   PanelToWash: {fileID: 822620912}
   tutorial: {fileID: 1599957548}
-  timeBeforeTutorialAppears: 3
+  EditorTimeBeforeTutorialAppears: 3
 --- !u!114 &822620915
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -58156,7 +58156,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RotationThreshold: 3
   tutorial: {fileID: 1777124993}
-  waitTimeForTutorial: 3
+  EditorWaitTimeForTutorial: 3
 --- !u!222 &1685170676
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -61020,8 +61020,9 @@ GameObject:
   - component: {fileID: 1777124994}
   - component: {fileID: 1777124997}
   - component: {fileID: 1777124996}
-  - component: {fileID: 1777124995}
   - component: {fileID: 1777124998}
+  - component: {fileID: 1777124999}
+  - component: {fileID: 1777124995}
   m_Layer: 5
   m_Name: TutorialOrganic
   m_TagString: Untagged
@@ -61036,7 +61037,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1777124993}
-  m_LocalRotation: {x: 0, y: 0, z: 0.6427876, w: 0.7660445}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -61045,70 +61046,28 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 43.1, y: 2.6166}
+  m_AnchoredPosition: {x: 32.8, y: 3.3}
   m_SizeDelta: {x: -35.56, y: -44.57}
-  m_Pivot: {x: 0.49999967, y: 0.35154632}
---- !u!114 &1777124995
-MonoBehaviour:
+  m_Pivot: {x: 0.4999999, y: 0.36187595}
+--- !u!95 &1777124995
+Animator:
+  serializedVersion: 3
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1777124993}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 411dcac04aff248c4b98f1feb5595fb0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_onFinish:
-    m_PersistentCalls:
-      m_Calls: []
-  playType: 3
-  animationTime: 1
-  enablePlay: 0
-  awakePlay: 1
-  lgnoreTimeScale: 1
-  randomStartValue: 0
-  startValue: 0
-  _previewValue: 0
-  tweens:
-  - _tweenType: 1
-    _isSelf: 1
-    _tweenObject: {fileID: 1777124994}
-    _curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    _minAnimationTime: 0
-    _maxAnimationTime: 1
-    _isLocal: 1
-    _fromVector: {x: -0, y: 0, z: 79.99999}
-    _toVector: {x: 0, y: 0, z: 0}
-    _fromColor: {r: 1, g: 1, b: 1, a: 1}
-    _toColor: {r: 1, g: 1, b: 1, a: 1}
-    _fromFloat: 0
-    _toFloat: 0
-    _bezierCurve: {fileID: 0}
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 404a0d393f3d57849a1be76b23fc3bab, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &1777124996
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61157,6 +61116,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67e8b032ba5484342b84508e86d91805, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1777124999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1777124993}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3b515ca1c988ce43853bd6120e9b94b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Points:
+  - {x: 66.88, y: 15.44119, z: 0}
+  - {x: 66.88, y: -17.75881, z: 0}
+  - {x: 35.56, y: -24.65881, z: 0}
+  Loop: 1
+  Space: 0
+  Smoothing: 1
+  Visual: {fileID: 0}
 --- !u!1 &1777170378
 GameObject:
   m_ObjectHideFlags: 0
@@ -68974,7 +68953,7 @@ MonoBehaviour:
   AnimationPanel: {fileID: 1563851530}
   tutorial: {fileID: 935254879}
   scoreThreshold: 3
-  timeBeforeTutorialStarts: 2
+  EditorTimeBeforeTutorialStarts: 3
 --- !u!114 &1961673477
 MonoBehaviour:
   m_ObjectHideFlags: 0
