@@ -15,7 +15,8 @@ public class Factory : MonoBehaviour
 
     [HideInInspector]
     public RecycleItem itemToBeRecycled;
-
+	[SerializeField]
+	private GameObject MiniGameContainerPanel;
     [SerializeField]
     private int scoreAmount = 1;
 
@@ -78,9 +79,11 @@ public class Factory : MonoBehaviour
             {
                 recycleButton.SetActive(true);
                 MiniGameObject.SetActive(false);
+				MiniGameContainerPanel.SetActive(false);
             }
             else
             {
+				MiniGameContainerPanel.SetActive(true);
                 MiniGameObject.SetActive(true);
             }
         }

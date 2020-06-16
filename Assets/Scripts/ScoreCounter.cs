@@ -30,7 +30,11 @@ public class ScoreCounter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-		
+		if (Input.GetKey(KeyCode.V))
+		{
+			IncreaseTheScore(1);
+			
+		}
     }
 
     private void updateScoreText()
