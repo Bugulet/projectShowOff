@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 5ec8e282bc16c834fa141b879e1bf716
+=======
+guid: 86b75d55562a8fc4390553a55cc3b067
+>>>>>>> TheoBranch5
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
