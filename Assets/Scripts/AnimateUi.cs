@@ -2,10 +2,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-<<<<<<< HEAD
-=======
-
->>>>>>> TheoBranch5
 using UnityEngine;
 using UnityEngine.U2D;
 using UnityEngine.UI;
