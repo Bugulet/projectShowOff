@@ -35,7 +35,7 @@ public class ScoreCounter : MonoBehaviour
 
     private void updateScoreText()
     {
-        scoreText.text ="Score: "+ Score;
+        scoreText.text =" " + Score;
     }
 
 	public void IncreaseTheScore(int amountToAdd)
@@ -62,13 +62,13 @@ public class ScoreCounter : MonoBehaviour
 	{
 		scoreText.color = Color.green;
 		yield return new WaitForSeconds(3);
-		scoreText.color = Color.white;
+		scoreText.color = Color.black;
 	}
 	IEnumerator ChangeTextColorRed()
 	{
 		scoreText.color = Color.red;
 		yield return new WaitForSeconds(3);
-		scoreText.color = Color.white;
+		scoreText.color = Color.black;
 	}
 
 }
