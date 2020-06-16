@@ -18,6 +18,7 @@ public class MaterialCounter : MonoBehaviour
 		{
 			IncreaseMaterials(1);
 		}
+		print(Materials);
     }
 	public void IncreaseMaterials(int materialAmount)
 	{
