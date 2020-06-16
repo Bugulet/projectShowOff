@@ -36,6 +36,7 @@ public class OrganicMinigame : MonoBehaviour , MinigameInterface
         score = 0;
         pistonObject.transform.localPosition = new Vector3(0,80 , 0);
         trashObject.transform.localScale = new Vector3(smashedScale.x,smashedScale.y,smashedScale.y);
+		tutorial.SetActive(false);
     }
 
     // Update is called once per frame
@@ -69,8 +70,8 @@ public class OrganicMinigame : MonoBehaviour , MinigameInterface
     }
 	private IEnumerator StartTutorial()
 	{
-		timeBeforeTutorialStarts = EditorTimeBeforeTutorialStarts;
-		yield return new WaitForSeconds(timeBeforeTutorialStarts);
+		//timeBeforeTutorialStarts = EditorTimeBeforeTutorialStarts;
+		yield return new WaitForSeconds(EditorTimeBeforeTutorialStarts);
 		tutorial.SetActive(true);
 	}
     
