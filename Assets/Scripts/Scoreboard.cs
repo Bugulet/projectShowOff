@@ -10,33 +10,37 @@ public class Scoreboard : MonoBehaviour
     private string currentSessionName = "";
 
     [SerializeField]
-    private Text scoreGameObject, currentSessionGameObject;
+    private GameObject scoreGameObject, currentSessionGameObject, scoreElement;
+    
 
     public void Start()
     {
         if (scoreGameObject != null && currentSessionGameObject!=null)
         {
-            scoreGameObject.text = "";
-            currentSessionGameObject.text = "";
+            
 
             List<ScoreObject> scoreSessions = GetAllSessions();
 
             ScoreObject currentSession = scoreSessions[scoreSessions.Count - 1];
-            currentSessionGameObject.text = currentSession.ToString();
+            
 
             scoreSessions.Sort((x, y) => y.score - x.score);
 
 
             for (int i = 0; i < scoreSessions.Count; i++)
             {
+                GameObject newElement = Instantiate(scoreElement, scoreGameObject.transform);
+
+                newElement.transform.GetChild(1).GetComponent<Text>().text = (i + 1).ToString();
+                newElement.transform.GetChild(2).transform.GetChild(0).GetComponent<Text>().text = scoreSessions[i].name;
+                newElement.transform.GetChild(3).transform.GetChild(0).GetComponent<Text>().text = scoreSessions[i].score.ToString();
+                newElement.transform.GetChild(4).transform.GetChild((int)scoreSessions[i].team-1).gameObject.SetActive(true);
+
                 if (scoreSessions[i] == currentSession)
                 {
-                    scoreGameObject.text += (i+1) + ". " + scoreSessions[i] + "  <- YOUR SCORE \n" ;
+                    newElement.transform.GetChild(0).gameObject.SetActive(true);
                 }
-                else
-                {
-                    scoreGameObject.text +=(i+1)+". " + scoreSessions[i] + "\n";
-                }
+                
             }
         }
         else

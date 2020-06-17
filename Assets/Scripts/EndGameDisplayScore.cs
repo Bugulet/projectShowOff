@@ -10,7 +10,7 @@ public class EndGameDisplayScore : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-		scoreText.text = "Scorul tau este: " + PlayerPrefs.GetInt("score").ToString();
+		scoreText.text = PlayerPrefs.GetInt("score").ToString();
     }
 
     // Update is called once per frame
@@ -19,7 +19,7 @@ public class EndGameDisplayScore : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.C))
         {
             PlayerPrefs.SetInt("score", Random.Range(0, 150));
-            scoreText.text = "Scorul tau este: " + PlayerPrefs.GetInt("score").ToString();
+            scoreText.text = PlayerPrefs.GetInt("score").ToString();
         }
     }
 }
