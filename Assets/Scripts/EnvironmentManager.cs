@@ -27,19 +27,25 @@ public class EnvironmentManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-		if(scoreCounter.Score >= scoreTresholdForNature)
+		StartCoroutine(RevealTheNature());
+		
+	}
+	private IEnumerator RevealTheNature()
+	{
+		yield return new WaitForSeconds(1);
+		if (scoreCounter.Score >= scoreTresholdForNature)
 		{
 			TrashedHouses.SetActive(false);
 			OtherTrash.SetActive(false);
 			BadTiles.SetActive(false);
 			CleanTiles.SetActive(true);
 			CleanHouses.SetActive(true);
-			
+
 		}
-		if(scoreCounter.Score >= scoreThresholdForStatue)
+		if (scoreCounter.Score >= scoreThresholdForStatue)
 		{
 			RecycleStatue.SetActive(true);
 		}
+		
 	}
 }
