@@ -1901,7 +1901,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 953494911}
-        m_MethodName: GoToTutorialWrapper
+        m_MethodName: GoToStartWrapper
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
