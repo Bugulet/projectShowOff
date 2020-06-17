@@ -38,6 +38,7 @@ public class PaperFactoryMiniGame : MonoBehaviour , MinigameInterface
 	public void ResetMiniGame()
 	{
 		tapCounter = 0;
+		tutorial.SetActive(false);
 	}
 
     public bool IsMinigameFinished()
@@ -52,8 +53,8 @@ public class PaperFactoryMiniGame : MonoBehaviour , MinigameInterface
 	}
 	private IEnumerator StartTutorial()
 	{
-		timeBeforeTutorialAppears = EditorTimeBeforeTutorialAppears;
-		yield return new WaitForSeconds(timeBeforeTutorialAppears);
+		//timeBeforeTutorialAppears = EditorTimeBeforeTutorialAppears;
+		yield return new WaitForSeconds(EditorTimeBeforeTutorialAppears);
 		tutorial.SetActive(true);
 	}
 }

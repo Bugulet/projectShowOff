@@ -29,6 +29,7 @@ public class MetalMinigame : MonoBehaviour, MinigameInterface
     {
         rotations = 0;
         angleIsNegative = false;
+		tutorial.SetActive(false);
     }
 
     // Start is called before the first frame update
@@ -82,8 +83,8 @@ public class MetalMinigame : MonoBehaviour, MinigameInterface
     }
 	private IEnumerator StartTutorial()
 	{
-		waitTimeForTutorial = EditorWaitTimeForTutorial;
-		yield return new WaitForSeconds(waitTimeForTutorial);
+		//waitTimeForTutorial = EditorWaitTimeForTutorial;
+		yield return new WaitForSeconds(EditorWaitTimeForTutorial);
 		tutorial.SetActive(true);
 
 	}

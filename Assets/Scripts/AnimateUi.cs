@@ -35,7 +35,7 @@ public class AnimateUi : MonoBehaviour
 
 			yield return new WaitForSeconds(0.07f);
 
-			currentSpriteIndex = (currentSpriteIndex + 1) % SpriteSheet.Length;
+			currentSpriteIndex = (currentSpriteIndex + 1) % (SpriteSheet.Length -1);
 
 			StartCoroutine(CloseAnimation());
 		}

@@ -8,6 +8,7 @@ public class UpgradeManager : MonoBehaviour
 	private MaterialCounter materialCounter;
 
 	public GameObject MacroUpgradeButton;
+	public GameObject CloseUpgradeButton;
 
 	public List<GameObject> ObjectUpgradeButtons;
 	private bool[] buttonIsHidden; 
@@ -43,7 +44,7 @@ public class UpgradeManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(materialCounter.Materials >= 2)
+        if(materialCounter.Materials >= 2 && CloseUpgradeButton.activeSelf == false)
 		{
 			EnableUpgradeButton();
 		}
@@ -87,6 +88,8 @@ public class UpgradeManager : MonoBehaviour
 				ObjectUpgradeButtons[i].SetActive(true);
 			}
 		}
+		DisableUpgradeButton();
+		CloseUpgradeButton.SetActive(true);
 	}
 
 	private void DisableAndRemoveButtonAtIndex(int index)
@@ -101,6 +104,16 @@ public class UpgradeManager : MonoBehaviour
 		{
 			ObjectUpgradeButtons[i].SetActive(false);
 		}
+	}
+	public void CloseUpgrades()
+	{
+		DisableAllButtons();
+		if(materialCounter.Materials >= 2)
+		{
+			MacroUpgradeButton.SetActive(true);
+		}
+		
+		CloseUpgradeButton.SetActive(false);
 	}
 
 	public void CreateBuildingButtonPressed()
