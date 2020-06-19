@@ -8,18 +8,24 @@ public class GoToTarget : MonoBehaviour
 {
     public Transform targetPoint;
     public float moveSpeed;
+	public Image panelToTarget;
 
     public Animator _starAnimator;
     // Start is called before the first frame update
     void Start()
     {
+		
+		targetPoint = panelToTarget.transform;
         _starAnimator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.position = Vector3.MoveTowards(transform.position, targetPoint.position, moveSpeed * Time.deltaTime);
+		float distanceSpeed = Vector2.Distance(transform.position,targetPoint.transform.position);
+		distanceSpeed += moveSpeed;
+
+        transform.position = Vector3.MoveTowards(transform.position, targetPoint.position, distanceSpeed * Time.deltaTime);
 		StartCoroutine(DestroyStar());
     }
 

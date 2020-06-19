@@ -24,6 +24,8 @@ public class MetalMinigame : MonoBehaviour, MinigameInterface
 	private AnimateUi OrganicAnimation;
 	[SerializeField]
 	private GameObject MinigameContainer;
+	[SerializeField]
+	private GameObject OrganicAnimationContainer;
 
     public bool IsMinigameFinished()
     {
@@ -86,7 +88,7 @@ public class MetalMinigame : MonoBehaviour, MinigameInterface
 		{
 			OrganicFactory.AddScoreAndMaterials();
 			ResetMiniGame();
-
+			OrganicAnimationContainer.SetActive(true);
 			OrganicAnimation.PlayAnimation();
 			this.gameObject.SetActive(false);
 			MinigameContainer.SetActive(false);

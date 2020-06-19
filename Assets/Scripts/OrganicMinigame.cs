@@ -27,6 +27,8 @@ public class OrganicMinigame : MonoBehaviour , MinigameInterface
 	private AnimateUi PlasticAnimation;
 	[SerializeField]
 	private GameObject PlasticMinigameContainer;
+	[SerializeField]
+	private GameObject PlasticAnimationContainer;
 
 	// Start is called before the first frame update
 	void Start()
@@ -63,7 +65,7 @@ public class OrganicMinigame : MonoBehaviour , MinigameInterface
 		{
 			PlasticFactory.AddScoreAndMaterials();
 			ResetMiniGame();
-
+			PlasticAnimationContainer.SetActive(true);
 			PlasticAnimation.PlayAnimation();
 			this.gameObject.SetActive(false);
 			PlasticMinigameContainer.SetActive(false);

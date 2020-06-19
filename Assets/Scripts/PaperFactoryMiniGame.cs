@@ -30,20 +30,20 @@ public class PaperFactoryMiniGame : MonoBehaviour , MinigameInterface
 	private AnimateUi MetalAnimation;
 	[SerializeField]
 	private GameObject MinigameContainer;
+	[SerializeField]
+	private GameObject MetalAnimationContainer;
 
 	private void Update()
 	{
 		StartCoroutine(StartTutorial());
 		if (IsMinigameFinished())
 		{
-			
 			MetalFactory.AddScoreAndMaterials();
 			ResetMiniGame();
-			
+			MetalAnimationContainer.SetActive(true);
 			MetalAnimation.PlayAnimation();
 			this.gameObject.SetActive(false);
 			MinigameContainer.SetActive(false);
-
 		}
 	}
 

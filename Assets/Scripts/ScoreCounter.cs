@@ -51,7 +51,9 @@ public class ScoreCounter : MonoBehaviour
 		Score += amountToAdd;
         updateScoreText();
 		StartCoroutine(ChangeTextColorGreen());
-		Instantiate(StarToInstantiate, Input.mousePosition, Quaternion.identity,canvas.transform);
+		
+		GameObject Star = Instantiate(StarToInstantiate, Input.mousePosition, Quaternion.identity,canvas.transform);
+		Star.SetActive(true);
 		PlayerPrefs.SetInt("score", Score);
 	}
 	public void DecreaseTheScore(int amountToAdd)
