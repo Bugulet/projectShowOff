@@ -21,6 +21,12 @@ public class OrganicMinigame : MonoBehaviour , MinigameInterface
 	private float timeBeforeTutorialStarts;
 	[SerializeField]
 	private float EditorTimeBeforeTutorialStarts;
+	[SerializeField]
+	private Factory PlasticFactory;
+	[SerializeField]
+	private AnimateUi PlasticAnimation;
+	[SerializeField]
+	private GameObject PlasticMinigameContainer;
 
 	// Start is called before the first frame update
 	void Start()
@@ -31,7 +37,7 @@ public class OrganicMinigame : MonoBehaviour , MinigameInterface
         smashedScale = trashObject.transform.localScale;
     }
     
-    public void ResetGame()
+    public void ResetMiniGame()
     {
         score = 0;
         pistonObject.transform.localPosition = new Vector3(0,80 , 0);
@@ -42,6 +48,7 @@ public class OrganicMinigame : MonoBehaviour , MinigameInterface
     // Update is called once per frame
     void LateUpdate()
     {
+		
 		if (pistonObject.GetComponent<CompareCollision>().HasCollidedWithObject())
         {
 			
@@ -52,7 +59,16 @@ public class OrganicMinigame : MonoBehaviour , MinigameInterface
 
         pistonObject.transform.localPosition = new Vector3(0, Mathf.Max(Mathf.Min(80, pistonObject.transform.localPosition.y), 30), 0);
 		StartCoroutine(StartTutorial());
-    }
+		if (IsMinigameFinished())
+		{
+			PlasticFactory.AddScoreAndMaterials();
+			ResetMiniGame();
+
+			PlasticAnimation.PlayAnimation();
+			this.gameObject.SetActive(false);
+			PlasticMinigameContainer.SetActive(false);
+		}
+	}
 
 
     public bool IsMinigameFinished()

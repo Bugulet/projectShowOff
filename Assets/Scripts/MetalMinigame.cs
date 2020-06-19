@@ -18,6 +18,12 @@ public class MetalMinigame : MonoBehaviour, MinigameInterface
     private int rotations = 0;
 
     private bool isTouching = false;
+	[SerializeField]
+	private Factory OrganicFactory;
+	[SerializeField]
+	private AnimateUi OrganicAnimation;
+	[SerializeField]
+	private GameObject MinigameContainer;
 
     public bool IsMinigameFinished()
     {
@@ -25,7 +31,7 @@ public class MetalMinigame : MonoBehaviour, MinigameInterface
         return rotations > RotationThreshold;
     }
 
-    public void ResetGame()
+    public void ResetMiniGame()
     {
         rotations = 0;
         angleIsNegative = false;
@@ -42,6 +48,7 @@ public class MetalMinigame : MonoBehaviour, MinigameInterface
     // Update is called once per frame
     private void Update()
     {
+		
         if (Lean.Touch.LeanTouch.Fingers.Count > 0 && 
             RectTransformUtility.RectangleContainsScreenPoint(GetComponent<RectTransform>(),Lean.Touch.LeanTouch.Fingers[0].ScreenPosition) && Globals.isGrabbingTrash==false)
         {
@@ -75,7 +82,16 @@ public class MetalMinigame : MonoBehaviour, MinigameInterface
             //print(rotations + "    " + rotation + "   " + angleIsNegative);
         }
 		StartCoroutine(StartTutorial());
-    }
+		if (IsMinigameFinished())
+		{
+			OrganicFactory.AddScoreAndMaterials();
+			ResetMiniGame();
+
+			OrganicAnimation.PlayAnimation();
+			this.gameObject.SetActive(false);
+			MinigameContainer.SetActive(false);
+		}
+	}
 
     private void LeanTouch_OnFingerUp(Lean.Touch.LeanFinger obj)
     {

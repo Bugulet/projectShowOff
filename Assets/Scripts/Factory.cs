@@ -77,9 +77,11 @@ public class Factory : MonoBehaviour
         {
             if (MiniGame.IsMinigameFinished())
             {
-                recycleButton.SetActive(true);
-                MiniGameObject.SetActive(false);
-				MiniGameContainerPanel.SetActive(false);
+                ///recycleButton.SetActive(true);
+				
+                //MiniGameObject.SetActive(false);
+				//MiniGameContainerPanel.SetActive(false);
+				
             }
             else
             {
@@ -94,7 +96,7 @@ public class Factory : MonoBehaviour
         scoreCounter.IncreaseTheScore(scoreAmount*5);
         materialCounter.IncreaseMaterials(materialAmount);
         itemsRecycled = 0;
-        recycleButton.SetActive(false);
+        //recycleButton.SetActive(false);
     }
 
 

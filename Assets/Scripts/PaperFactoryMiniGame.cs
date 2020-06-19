@@ -24,9 +24,27 @@ public class PaperFactoryMiniGame : MonoBehaviour , MinigameInterface
 	private float EditorTimeBeforeTutorialAppears;
 	private Image paperToWash;
 
+	[SerializeField]
+	private Factory MetalFactory;
+	[SerializeField]
+	private AnimateUi MetalAnimation;
+	[SerializeField]
+	private GameObject MinigameContainer;
+
 	private void Update()
 	{
 		StartCoroutine(StartTutorial());
+		if (IsMinigameFinished())
+		{
+			
+			MetalFactory.AddScoreAndMaterials();
+			ResetMiniGame();
+			
+			MetalAnimation.PlayAnimation();
+			this.gameObject.SetActive(false);
+			MinigameContainer.SetActive(false);
+
+		}
 	}
 
 	public void WashPaper()
