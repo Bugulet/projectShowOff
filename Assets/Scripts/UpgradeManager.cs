@@ -128,6 +128,7 @@ public class UpgradeManager : MonoBehaviour
 		DisableAndRemoveButtonAtIndex(1);
 		DisableAllButtons();
 		DisableUpgradeButton();
+		CloseUpgradeButton.SetActive(false);
 	}
 
 	public void CreateBuildingButtonPressed2()
@@ -142,6 +143,7 @@ public class UpgradeManager : MonoBehaviour
 		DisableAndRemoveButtonAtIndex(2);
 		DisableAllButtons();
 		DisableUpgradeButton();
+		CloseUpgradeButton.SetActive(false);
 	}
 
 
@@ -157,6 +159,7 @@ public class UpgradeManager : MonoBehaviour
 		DisableAndRemoveButtonAtIndex(3);
 		DisableAllButtons();
 		DisableUpgradeButton();
+		CloseUpgradeButton.SetActive(false);
 	}
 
     private void GoToEnd()
@@ -190,6 +193,7 @@ public class UpgradeManager : MonoBehaviour
 		DisableAndRemoveButtonAtIndex(5);
 		DisableAllButtons();
 		DisableUpgradeButton();
+		CloseUpgradeButton.SetActive(false);
 	}
 	public void CreateCornfield()
 	{
@@ -220,6 +224,7 @@ public class UpgradeManager : MonoBehaviour
 		DisableAndRemoveButtonAtIndex(6);
 		DisableAllButtons();
 		DisableUpgradeButton();
+		CloseUpgradeButton.SetActive(false);
 	}
 	public void CreateBlocks()
 	{
@@ -233,6 +238,7 @@ public class UpgradeManager : MonoBehaviour
 		DisableAndRemoveButtonAtIndex(7);
 		DisableAllButtons();
 		DisableUpgradeButton();
+		CloseUpgradeButton.SetActive(false);
 	}
 	
 
