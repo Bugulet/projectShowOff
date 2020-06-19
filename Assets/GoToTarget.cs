@@ -20,9 +20,10 @@ public class GoToTarget : MonoBehaviour
     void Update()
     {
         transform.position = Vector3.MoveTowards(transform.position, targetPoint.position, moveSpeed * Time.deltaTime);
+		StartCoroutine(DestroyStar());
     }
 
-    private void OnCollisionEnter(Collider other)
+    private void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.tag == "target")
         {
@@ -34,4 +35,9 @@ public class GoToTarget : MonoBehaviour
             //star.rectTransform.sizeDelta = new Vector2(width, height);
         }
     }
+	private IEnumerator DestroyStar()
+	{
+		yield return new WaitForSeconds(3);
+		Destroy(this.gameObject);
+	}
 }

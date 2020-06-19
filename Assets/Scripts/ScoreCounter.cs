@@ -14,6 +14,8 @@ public class ScoreCounter : MonoBehaviour
 	private Text positiveFeedbackText;
 	[SerializeField]
 	private Text negativeFeedbackText;
+	[SerializeField]
+	private GameObject StarToInstantiate;
 
 	private Text InstanceHolder;
 	private Canvas canvas;
@@ -49,7 +51,7 @@ public class ScoreCounter : MonoBehaviour
 		Score += amountToAdd;
         updateScoreText();
 		StartCoroutine(ChangeTextColorGreen());
-
+		Instantiate(StarToInstantiate, Input.mousePosition, Quaternion.identity,canvas.transform);
 		PlayerPrefs.SetInt("score", Score);
 	}
 	public void DecreaseTheScore(int amountToAdd)
