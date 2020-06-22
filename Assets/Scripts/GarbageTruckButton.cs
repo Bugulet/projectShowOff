@@ -17,6 +17,7 @@ public class GarbageTruckButton : MonoBehaviour
     private float timeRemaining;
 
 	bool TutorialFlag = false;
+	bool OneTimeTutorial = false;
    // private Text innerText;
 
     // Start is called before the first frame update
@@ -45,11 +46,13 @@ public class GarbageTruckButton : MonoBehaviour
             ForceRefreshTrash();
         }
 		fillBar.fillAmount = timeRemaining / rechargeTime;
-		if (Globals.ItemsRecycled >= 4 && TutorialFlag == false)
+		if (Globals.ItemsRecycled >= 4 && TutorialFlag == false && OneTimeTutorial == false)
 		{
+			OneTimeTutorial = true;
 			TutorialFlag = true;
 			StartCoroutine(playTutorial());
 		}
+		print(Globals.ItemsRecycled);
     }
 
     private void ReplenishTrash()
@@ -99,10 +102,8 @@ public class GarbageTruckButton : MonoBehaviour
 	}
 	public void CloseTutorial()
 	{
-		
-		
+
 		TutorialFlag = false;
 		tutorialPanel.SetActive(false);
-		
 	}
 }
