@@ -44,27 +44,24 @@ public class UpgradeManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-		if (Globals.isGameOver == false)
+        if(materialCounter.Materials >= 2 && CloseUpgradeButton.activeSelf == false)
 		{
-			if (materialCounter.Materials >= 2 && CloseUpgradeButton.activeSelf == false)
-			{
-				EnableUpgradeButton();
-			}
-
-			if (timer > 0)
-			{
-
-				timer += Time.deltaTime;
-			}
-			if (timer > 4)
-			{
-				GoToEnd();
-			}
+			EnableUpgradeButton();
 		}
-		/*if(gameTimer.TimerCount < 0)
+
+        if (timer > 0)
+        {
+           
+            timer += Time.deltaTime;
+        }
+        if (timer > 4)
+        {
+            GoToEnd();
+        }
+		if(gameTimer.TimerCount < 0)
 		{
 			SceneChanger.GoToEnd();
-		}*/
+		}
     }
 
 	private void EnableUpgradeButton()
