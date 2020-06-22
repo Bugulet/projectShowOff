@@ -1811,7 +1811,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 51182281}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 499376709}
+        m_MethodName: GoToStartWrapper
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &51182281
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16718,6 +16729,7 @@ GameObject:
   m_Component:
   - component: {fileID: 499376707}
   - component: {fileID: 499376708}
+  - component: {fileID: 499376709}
   m_Layer: 0
   m_Name: ScoreManager
   m_TagString: Untagged
@@ -16757,6 +16769,18 @@ MonoBehaviour:
   negativeFeedbackText: {fileID: 2153659170578308072, guid: 8fab645b9b5916c418ccd4f9d46d0e32,
     type: 3}
   StarToInstantiate: {fileID: 6635724745562968080}
+--- !u!114 &499376709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 499376706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16cc9a50ce516c34c871ec034627b56f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &500048116
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18867,7 +18891,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 549477207}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1197735037}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &549477207
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -44238,7 +44273,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d6f03da4ce56424ca1fcc9c7e0ba7d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TimerCount: 50
+  TimerCount: 100
   TimerText: {fileID: 255382953}
   endPanel: {fileID: 245192185}
 --- !u!1 &1323727879
@@ -72412,12 +72447,12 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11500000, guid: 16cc9a50ce516c34c871ec034627b56f, type: 3}
-        m_MethodName: 
+      - m_Target: {fileID: 499376709}
+        m_MethodName: GoToEndWrapper
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
