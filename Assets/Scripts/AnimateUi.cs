@@ -36,6 +36,7 @@ public class AnimateUi : MonoBehaviour
 			currentSpriteIndex = (currentSpriteIndex + 1) % (SpriteSheet.Length -1);
             print("picture size "+SpriteSheet[currentSpriteIndex].texture.width);
 		}
+		
 	}
 
 	public void PlayAnimation()

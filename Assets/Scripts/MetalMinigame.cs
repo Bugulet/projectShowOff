@@ -50,48 +50,50 @@ public class MetalMinigame : MonoBehaviour, MinigameInterface
     // Update is called once per frame
     private void Update()
     {
-		
-        if (Lean.Touch.LeanTouch.Fingers.Count > 0 && 
-            RectTransformUtility.RectangleContainsScreenPoint(GetComponent<RectTransform>(),Lean.Touch.LeanTouch.Fingers[0].ScreenPosition) && Globals.isGrabbingTrash==false)
-        {
-            isTouching = true;
-        }
-
-        if (Lean.Touch.LeanTouch.Fingers.Count == 0)
-        {
-            isTouching = false;
-        }
-
-        if (isTouching)
-        {
-            Vector2 targetPosition = Lean.Touch.LeanTouch.Fingers[0].ScreenPosition;
-            Vector2 direction = new Vector2(targetPosition.x - transform.position.x, targetPosition.y - transform.position.y);
-            float rotation = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-            wheelOne.transform.eulerAngles = new Vector3(0, 0, rotation);
-            wheelTwo.transform.eulerAngles = new Vector3(0, 0, -rotation);
-
-            if (rotation > 0 && angleIsNegative == true)
-            {
-                angleIsNegative = false;
-                rotations++;
-            }
-
-            if (rotation < 0)
-            {
-                angleIsNegative = true;
-            }
-
-            //print(rotations + "    " + rotation + "   " + angleIsNegative);
-        }
-		StartCoroutine(StartTutorial());
-		if (IsMinigameFinished())
+		if (Globals.isGameOver == false)
 		{
-			OrganicFactory.AddScoreAndMaterials();
-			ResetMiniGame();
-			OrganicAnimationContainer.SetActive(true);
-			OrganicAnimation.PlayAnimation();
-			this.gameObject.SetActive(false);
-			MinigameContainer.SetActive(false);
+			if (Lean.Touch.LeanTouch.Fingers.Count > 0 &&
+				RectTransformUtility.RectangleContainsScreenPoint(GetComponent<RectTransform>(), Lean.Touch.LeanTouch.Fingers[0].ScreenPosition) && Globals.isGrabbingTrash == false)
+			{
+				isTouching = true;
+			}
+
+			if (Lean.Touch.LeanTouch.Fingers.Count == 0)
+			{
+				isTouching = false;
+			}
+
+			if (isTouching)
+			{
+				Vector2 targetPosition = Lean.Touch.LeanTouch.Fingers[0].ScreenPosition;
+				Vector2 direction = new Vector2(targetPosition.x - transform.position.x, targetPosition.y - transform.position.y);
+				float rotation = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+				wheelOne.transform.eulerAngles = new Vector3(0, 0, rotation);
+				wheelTwo.transform.eulerAngles = new Vector3(0, 0, -rotation);
+
+				if (rotation > 0 && angleIsNegative == true)
+				{
+					angleIsNegative = false;
+					rotations++;
+				}
+
+				if (rotation < 0)
+				{
+					angleIsNegative = true;
+				}
+
+				//print(rotations + "    " + rotation + "   " + angleIsNegative);
+			}
+			StartCoroutine(StartTutorial());
+			if (IsMinigameFinished())
+			{
+				OrganicFactory.AddScoreAndMaterials();
+				ResetMiniGame();
+				OrganicAnimationContainer.SetActive(true);
+				OrganicAnimation.PlayAnimation();
+				this.gameObject.SetActive(false);
+				MinigameContainer.SetActive(false);
+			}
 		}
 	}
 

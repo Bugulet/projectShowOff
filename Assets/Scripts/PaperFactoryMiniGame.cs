@@ -35,15 +35,18 @@ public class PaperFactoryMiniGame : MonoBehaviour , MinigameInterface
 
 	private void Update()
 	{
-		StartCoroutine(StartTutorial());
-		if (IsMinigameFinished())
+		if (Globals.isGameOver == false)
 		{
-			MetalFactory.AddScoreAndMaterials();
-			ResetMiniGame();
-			MetalAnimationContainer.SetActive(true);
-			MetalAnimation.PlayAnimation();
-			this.gameObject.SetActive(false);
-			MinigameContainer.SetActive(false);
+			StartCoroutine(StartTutorial());
+			if (IsMinigameFinished())
+			{
+				MetalFactory.AddScoreAndMaterials();
+				ResetMiniGame();
+				MetalAnimationContainer.SetActive(true);
+				MetalAnimation.PlayAnimation();
+				this.gameObject.SetActive(false);
+				MinigameContainer.SetActive(false);
+			}
 		}
 	}
 

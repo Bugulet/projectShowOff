@@ -50,25 +50,27 @@ public class OrganicMinigame : MonoBehaviour , MinigameInterface
     // Update is called once per frame
     void LateUpdate()
     {
-		
-		if (pistonObject.GetComponent<CompareCollision>().HasCollidedWithObject())
-        {
-			
-			score++;
-            trashObject.transform.localScale = new Vector3(trashObject.transform.localScale.x, trashObject.transform.localScale.y/1.2f);
-			
-        }
-
-        pistonObject.transform.localPosition = new Vector3(0, Mathf.Max(Mathf.Min(80, pistonObject.transform.localPosition.y), 30), 0);
-		StartCoroutine(StartTutorial());
-		if (IsMinigameFinished())
+		if (Globals.isGameOver == false)
 		{
-			PlasticFactory.AddScoreAndMaterials();
-			ResetMiniGame();
-			PlasticAnimationContainer.SetActive(true);
-			PlasticAnimation.PlayAnimation();
-			this.gameObject.SetActive(false);
-			PlasticMinigameContainer.SetActive(false);
+			if (pistonObject.GetComponent<CompareCollision>().HasCollidedWithObject())
+			{
+
+				score++;
+				trashObject.transform.localScale = new Vector3(trashObject.transform.localScale.x, trashObject.transform.localScale.y / 1.2f);
+
+			}
+
+			pistonObject.transform.localPosition = new Vector3(0, Mathf.Max(Mathf.Min(80, pistonObject.transform.localPosition.y), 30), 0);
+			StartCoroutine(StartTutorial());
+			if (IsMinigameFinished())
+			{
+				PlasticFactory.AddScoreAndMaterials();
+				ResetMiniGame();
+				PlasticAnimationContainer.SetActive(true);
+				PlasticAnimation.PlayAnimation();
+				this.gameObject.SetActive(false);
+				PlasticMinigameContainer.SetActive(false);
+			}
 		}
 	}
 
