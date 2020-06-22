@@ -7,13 +7,17 @@ public class GarbageTruckButton : MonoBehaviour
 {
     [SerializeField]
     private GameObject trashPanel;
-
+	[SerializeField]
+	private GameObject tutorialPanel;
 	private Image fillBar;
 
     [SerializeField]
     [Range(0, 14)]
     public float rechargeTime;
     private float timeRemaining;
+
+	bool TutorialFlag = false;
+	bool OneTimeTutorial = false;
    // private Text innerText;
 
     // Start is called before the first frame update
@@ -27,21 +31,31 @@ public class GarbageTruckButton : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        timeRemaining += Time.deltaTime;
-        if (timeRemaining < rechargeTime)
-        {
-           // innerText.text = "Time left: " + (int)(rechargeTime - timeRemaining);
-        }
-        else
-        {
-           // innerText.text = "Ready!";
-        }
+		if (Globals.isGameOver == false)
+		{
+			timeRemaining += Time.deltaTime;
+			if (timeRemaining < rechargeTime)
+			{
+				// innerText.text = "Time left: " + (int)(rechargeTime - timeRemaining);
+			}
+			else
+			{
+				// innerText.text = "Ready!";
+			}
 
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            ForceRefreshTrash();
-        }
-		fillBar.fillAmount = timeRemaining / rechargeTime;
+			if (Input.GetKeyDown(KeyCode.R))
+			{
+				ForceRefreshTrash();
+			}
+			fillBar.fillAmount = timeRemaining / rechargeTime;
+			if (Globals.ItemsRecycled >= 4 && TutorialFlag == false && OneTimeTutorial == false)
+			{
+				OneTimeTutorial = true;
+				TutorialFlag = true;
+				StartCoroutine(playTutorial());
+			}
+		}
+		//print(Globals.ItemsRecycled);
     }
 
     private void ReplenishTrash()
@@ -84,4 +98,15 @@ public class GarbageTruckButton : MonoBehaviour
         //innerText.color = Color.white;
 
     }
+	private IEnumerator playTutorial()
+	{
+		yield return new WaitForSeconds(2);
+		tutorialPanel.SetActive(true);
+	}
+	public void CloseTutorial()
+	{
+
+		TutorialFlag = false;
+		tutorialPanel.SetActive(false);
+	}
 }

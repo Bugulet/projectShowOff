@@ -18,6 +18,14 @@ public class MetalMinigame : MonoBehaviour, MinigameInterface
     private int rotations = 0;
 
     private bool isTouching = false;
+	[SerializeField]
+	private Factory OrganicFactory;
+	[SerializeField]
+	private AnimateUi OrganicAnimation;
+	[SerializeField]
+	private GameObject MinigameContainer;
+	[SerializeField]
+	private GameObject OrganicAnimationContainer;
 
     public bool IsMinigameFinished()
     {
@@ -25,7 +33,7 @@ public class MetalMinigame : MonoBehaviour, MinigameInterface
         return rotations > RotationThreshold;
     }
 
-    public void ResetGame()
+    public void ResetMiniGame()
     {
         rotations = 0;
         angleIsNegative = false;
@@ -42,40 +50,52 @@ public class MetalMinigame : MonoBehaviour, MinigameInterface
     // Update is called once per frame
     private void Update()
     {
-        if (Lean.Touch.LeanTouch.Fingers.Count > 0 && 
-            RectTransformUtility.RectangleContainsScreenPoint(GetComponent<RectTransform>(),Lean.Touch.LeanTouch.Fingers[0].ScreenPosition) && Globals.isGrabbingTrash==false)
-        {
-            isTouching = true;
-        }
+		if (Globals.isGameOver == false)
+		{
+			if (Lean.Touch.LeanTouch.Fingers.Count > 0 &&
+				RectTransformUtility.RectangleContainsScreenPoint(GetComponent<RectTransform>(), Lean.Touch.LeanTouch.Fingers[0].ScreenPosition) && Globals.isGrabbingTrash == false)
+			{
+				isTouching = true;
+			}
 
-        if (Lean.Touch.LeanTouch.Fingers.Count == 0)
-        {
-            isTouching = false;
-        }
+			if (Lean.Touch.LeanTouch.Fingers.Count == 0)
+			{
+				isTouching = false;
+			}
 
-        if (isTouching)
-        {
-            Vector2 targetPosition = Lean.Touch.LeanTouch.Fingers[0].ScreenPosition;
-            Vector2 direction = new Vector2(targetPosition.x - transform.position.x, targetPosition.y - transform.position.y);
-            float rotation = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-            wheelOne.transform.eulerAngles = new Vector3(0, 0, rotation);
-            wheelTwo.transform.eulerAngles = new Vector3(0, 0, -rotation);
+			if (isTouching)
+			{
+				Vector2 targetPosition = Lean.Touch.LeanTouch.Fingers[0].ScreenPosition;
+				Vector2 direction = new Vector2(targetPosition.x - transform.position.x, targetPosition.y - transform.position.y);
+				float rotation = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+				wheelOne.transform.eulerAngles = new Vector3(0, 0, rotation);
+				wheelTwo.transform.eulerAngles = new Vector3(0, 0, -rotation);
 
-            if (rotation > 0 && angleIsNegative == true)
-            {
-                angleIsNegative = false;
-                rotations++;
-            }
+				if (rotation > 0 && angleIsNegative == true)
+				{
+					angleIsNegative = false;
+					rotations++;
+				}
 
-            if (rotation < 0)
-            {
-                angleIsNegative = true;
-            }
+				if (rotation < 0)
+				{
+					angleIsNegative = true;
+				}
 
-            //print(rotations + "    " + rotation + "   " + angleIsNegative);
-        }
-		StartCoroutine(StartTutorial());
-    }
+				//print(rotations + "    " + rotation + "   " + angleIsNegative);
+			}
+			StartCoroutine(StartTutorial());
+			if (IsMinigameFinished())
+			{
+				OrganicFactory.AddScoreAndMaterials();
+				ResetMiniGame();
+				OrganicAnimationContainer.SetActive(true);
+				OrganicAnimation.PlayAnimation();
+				this.gameObject.SetActive(false);
+				MinigameContainer.SetActive(false);
+			}
+		}
+	}
 
     private void LeanTouch_OnFingerUp(Lean.Touch.LeanFinger obj)
     {

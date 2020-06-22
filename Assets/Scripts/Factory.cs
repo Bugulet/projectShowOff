@@ -49,44 +49,50 @@ public class Factory : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        //if bin is not full
-        if (itemsRecycled < recycledItemsThreshold)
-        {
-            //if an item collided with the factory and the finger was released
-            if (itemToBeRecycled != null && itemToBeRecycled.GetComponent<Lean.Touch.LeanSelectable>().IsSelected == false)
-            {
-                if (CompareWithReceivedItem(itemToBeRecycled))
-                {
-                    //set it to innactive but dont destroy it, used for regenerating the item afterwards
-                    scoreCounter.IncreaseTheScore(scoreAmount);
-                    itemToBeRecycled.gameObject.SetActive(false);
-                    itemsRecycled++;
-                    FindObjectOfType<SoundEffects>().PlayGoodSound();
+		//if bin is not full
+		if (Globals.isGameOver == false)
+		{
+			if (itemsRecycled < recycledItemsThreshold)
+			{
+				//if an item collided with the factory and the finger was released
+				if (itemToBeRecycled != null && itemToBeRecycled.GetComponent<Lean.Touch.LeanSelectable>().IsSelected == false)
+				{
+					if (CompareWithReceivedItem(itemToBeRecycled))
+					{
+						//set it to innactive but dont destroy it, used for regenerating the item afterwards
+						scoreCounter.IncreaseTheScore(scoreAmount);
+						itemToBeRecycled.gameObject.SetActive(false);
+						itemsRecycled++;
+						Globals.ItemsRecycled++;
+						FindObjectOfType<SoundEffects>().PlayGoodSound();
 
-                }
-                else
-                {
-                    FindObjectOfType<SoundEffects>().PlayBadSound();
-                    scoreCounter.DecreaseTheScore(scoreAmount);
-                }
-                itemToBeRecycled = null;
-            }
-        }
-        //if its full just enable the button for recycling
-        else
-        {
-            if (MiniGame.IsMinigameFinished())
-            {
-                recycleButton.SetActive(true);
-                MiniGameObject.SetActive(false);
-				MiniGameContainerPanel.SetActive(false);
-            }
-            else
-            {
-				MiniGameContainerPanel.SetActive(true);
-                MiniGameObject.SetActive(true);
-            }
-        }
+					}
+					else
+					{
+						FindObjectOfType<SoundEffects>().PlayBadSound();
+						scoreCounter.DecreaseTheScore(scoreAmount);
+					}
+					itemToBeRecycled = null;
+				}
+			}
+			//if its full just enable the button for recycling
+			else
+			{
+				if (MiniGame.IsMinigameFinished())
+				{
+					///recycleButton.SetActive(true);
+
+					//MiniGameObject.SetActive(false);
+					//MiniGameContainerPanel.SetActive(false);
+
+				}
+				else
+				{
+					MiniGameContainerPanel.SetActive(true);
+					MiniGameObject.SetActive(true);
+				}
+			}
+		}
     }
 
     public void AddScoreAndMaterials()
@@ -94,7 +100,7 @@ public class Factory : MonoBehaviour
         scoreCounter.IncreaseTheScore(scoreAmount*5);
         materialCounter.IncreaseMaterials(materialAmount);
         itemsRecycled = 0;
-        recycleButton.SetActive(false);
+        //recycleButton.SetActive(false);
     }
 
 

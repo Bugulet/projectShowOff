@@ -21,6 +21,14 @@ public class OrganicMinigame : MonoBehaviour , MinigameInterface
 	private float timeBeforeTutorialStarts;
 	[SerializeField]
 	private float EditorTimeBeforeTutorialStarts;
+	[SerializeField]
+	private Factory PlasticFactory;
+	[SerializeField]
+	private AnimateUi PlasticAnimation;
+	[SerializeField]
+	private GameObject PlasticMinigameContainer;
+	[SerializeField]
+	private GameObject PlasticAnimationContainer;
 
 	// Start is called before the first frame update
 	void Start()
@@ -31,7 +39,7 @@ public class OrganicMinigame : MonoBehaviour , MinigameInterface
         smashedScale = trashObject.transform.localScale;
     }
     
-    public void ResetGame()
+    public void ResetMiniGame()
     {
         score = 0;
         pistonObject.transform.localPosition = new Vector3(0,80 , 0);
@@ -42,17 +50,29 @@ public class OrganicMinigame : MonoBehaviour , MinigameInterface
     // Update is called once per frame
     void LateUpdate()
     {
-		if (pistonObject.GetComponent<CompareCollision>().HasCollidedWithObject())
-        {
-			
-			score++;
-            trashObject.transform.localScale = new Vector3(trashObject.transform.localScale.x, trashObject.transform.localScale.y/1.2f);
-			
-        }
+		if (Globals.isGameOver == false)
+		{
+			if (pistonObject.GetComponent<CompareCollision>().HasCollidedWithObject())
+			{
 
-        pistonObject.transform.localPosition = new Vector3(0, Mathf.Max(Mathf.Min(80, pistonObject.transform.localPosition.y), 30), 0);
-		StartCoroutine(StartTutorial());
-    }
+				score++;
+				trashObject.transform.localScale = new Vector3(trashObject.transform.localScale.x, trashObject.transform.localScale.y / 1.2f);
+
+			}
+
+			pistonObject.transform.localPosition = new Vector3(0, Mathf.Max(Mathf.Min(80, pistonObject.transform.localPosition.y), 30), 0);
+			StartCoroutine(StartTutorial());
+			if (IsMinigameFinished())
+			{
+				PlasticFactory.AddScoreAndMaterials();
+				ResetMiniGame();
+				PlasticAnimationContainer.SetActive(true);
+				PlasticAnimation.PlayAnimation();
+				this.gameObject.SetActive(false);
+				PlasticMinigameContainer.SetActive(false);
+			}
+		}
+	}
 
 
     public bool IsMinigameFinished()
