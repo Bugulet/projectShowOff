@@ -27,19 +27,16 @@ public class UpgradesGetScoreOverTIme : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		if (Globals.isGameOver == false)
+		counter -= Time.deltaTime;
+
+		if(counter <= 0)
 		{
-			counter -= Time.deltaTime;
+			CollectScoreButton.SetActive(true);
+		}
 
-			if (counter <= 0)
-			{
-				CollectScoreButton.SetActive(true);
-			}
-
-			if (CollectScoreButton.activeSelf == true)
-			{
-				StartCoroutine(DisableButtonIfNotPressedInTime());
-			}
+		if(CollectScoreButton.activeSelf == true)
+		{
+			StartCoroutine(DisableButtonIfNotPressedInTime());
 		}
 	}
 
