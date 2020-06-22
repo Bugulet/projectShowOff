@@ -61,6 +61,7 @@ public class Factory : MonoBehaviour
                     scoreCounter.IncreaseTheScore(scoreAmount);
                     itemToBeRecycled.gameObject.SetActive(false);
                     itemsRecycled++;
+					Globals.ItemsRecycled++;
                     FindObjectOfType<SoundEffects>().PlayGoodSound();
 
                 }

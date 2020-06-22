@@ -17,6 +17,7 @@ public class RecycleItem : MonoBehaviour
 
     private void OnEnable()
     {
+		Globals.ItemsRecycled--;
         instantiateSprite();
     }
 

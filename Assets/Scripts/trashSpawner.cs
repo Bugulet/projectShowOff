@@ -6,6 +6,7 @@ using UnityEngine.Events;
 public class trashSpawner : MonoBehaviour
 {
     GameObject trashItem;
+	
 
     // Start is called before the first frame update
     void Start()
@@ -30,5 +31,11 @@ public class trashSpawner : MonoBehaviour
         {
             Globals.isGrabbingTrash = false;
         }
+		
+		if(Globals.ItemsRecycled >= 4)
+		{
+			print(Globals.ItemsRecycled);
+		}
+		
     }
 }

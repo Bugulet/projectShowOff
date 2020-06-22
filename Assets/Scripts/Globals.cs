@@ -5,4 +5,6 @@ using UnityEngine;
 public static class Globals
 {
     public static bool isGrabbingTrash = false;
+
+	public static int ItemsRecycled = 4;
 }
