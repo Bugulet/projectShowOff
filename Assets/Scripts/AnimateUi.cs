@@ -39,6 +39,7 @@ public class AnimateUi : MonoBehaviour
 
 			StartCoroutine(CloseAnimation());
 		}
+		
 	}
 	public void PlayAnimation()
 	{
