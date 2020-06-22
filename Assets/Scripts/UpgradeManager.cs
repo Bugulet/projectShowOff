@@ -164,8 +164,9 @@ public class UpgradeManager : MonoBehaviour
 		DisableUpgradeButton();
 		CloseUpgradeButton.SetActive(false);
 	}
+	
 
-    private void GoToEnd()
+	private void GoToEnd()
     {
         SceneChanger.GoToEnd();
     }
