@@ -31,28 +31,31 @@ public class GarbageTruckButton : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        timeRemaining += Time.deltaTime;
-        if (timeRemaining < rechargeTime)
-        {
-           // innerText.text = "Time left: " + (int)(rechargeTime - timeRemaining);
-        }
-        else
-        {
-           // innerText.text = "Ready!";
-        }
-
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            ForceRefreshTrash();
-        }
-		fillBar.fillAmount = timeRemaining / rechargeTime;
-		if (Globals.ItemsRecycled >= 4 && TutorialFlag == false && OneTimeTutorial == false)
+		if (Globals.isGameOver == false)
 		{
-			OneTimeTutorial = true;
-			TutorialFlag = true;
-			StartCoroutine(playTutorial());
+			timeRemaining += Time.deltaTime;
+			if (timeRemaining < rechargeTime)
+			{
+				// innerText.text = "Time left: " + (int)(rechargeTime - timeRemaining);
+			}
+			else
+			{
+				// innerText.text = "Ready!";
+			}
+
+			if (Input.GetKeyDown(KeyCode.R))
+			{
+				ForceRefreshTrash();
+			}
+			fillBar.fillAmount = timeRemaining / rechargeTime;
+			if (Globals.ItemsRecycled >= 4 && TutorialFlag == false && OneTimeTutorial == false)
+			{
+				OneTimeTutorial = true;
+				TutorialFlag = true;
+				StartCoroutine(playTutorial());
+			}
 		}
-		print(Globals.ItemsRecycled);
+		//print(Globals.ItemsRecycled);
     }
 
     private void ReplenishTrash()
