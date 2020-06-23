@@ -100,8 +100,12 @@ public class GarbageTruckButton : MonoBehaviour
     }
 	private IEnumerator playTutorial()
 	{
-		yield return new WaitForSeconds(2);
-		tutorialPanel.SetActive(true);
+		yield return new WaitForSeconds(0);
+		
+			tutorialPanel.SetActive(true);
+		
+		
+
 	}
 	public void CloseTutorial()
 	{

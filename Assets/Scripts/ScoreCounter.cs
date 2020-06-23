@@ -3,23 +3,26 @@ using System.Collections.Generic;
 using System;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 
 public class ScoreCounter : MonoBehaviour
 {
 
     [SerializeField]
-	private Text scoreText;
+	private TextMeshProUGUI scoreText;
 	[SerializeField]
-	private Text positiveFeedbackText;
+	private TextMeshProUGUI positiveFeedbackText;
 	[SerializeField]
-	private Text negativeFeedbackText;
+	private TextMeshProUGUI negativeFeedbackText;
 	[SerializeField]
 	private GameObject StarToInstantiate;
-
-	private Text InstanceHolder;
+	[SerializeField]
+	private TextMeshProUGUI TimesUpText;
+	private TextMeshProUGUI InstanceHolder;
 	private Canvas canvas;
-    
+
+	
     public int Score { get; private set; }
 	
 	void Start()
@@ -34,6 +37,7 @@ public class ScoreCounter : MonoBehaviour
 		{
 			IncreaseTheScore(1);
 		}
+		TimesUpText.text = " " + Score; 
     }
 
     private void updateScoreText()
@@ -44,7 +48,8 @@ public class ScoreCounter : MonoBehaviour
 	public void IncreaseTheScore(int amountToAdd)
 	{
 		InstanceHolder = Instantiate(positiveFeedbackText, Input.mousePosition, Quaternion.identity, canvas.transform);
-        InstanceHolder.GetComponent<Text>().text = "+" + amountToAdd + " score";
+        InstanceHolder.GetComponent<TextMeshProUGUI>().text = "+" + amountToAdd;
+		InstanceHolder.GetComponent<TextMeshProUGUI>().faceColor = new Color32(255,255,0,255);
 		Score += amountToAdd;
         updateScoreText();
 		StartCoroutine(ChangeTextColorGreen());
@@ -56,8 +61,9 @@ public class ScoreCounter : MonoBehaviour
 	public void DecreaseTheScore(int amountToAdd)
 	{
 		InstanceHolder = Instantiate(negativeFeedbackText, Input.mousePosition, Quaternion.identity, canvas.transform);
-        InstanceHolder.GetComponent<Text>().text = "-" + amountToAdd + " score";
-        Score -= amountToAdd;
+        InstanceHolder.GetComponent<TextMeshProUGUI>().text = "-" + amountToAdd;
+		InstanceHolder.GetComponent<TextMeshProUGUI>().faceColor = new Color32(255, 0, 0, 255);
+		Score -= amountToAdd;
         updateScoreText();
 		StartCoroutine(ChangeTextColorRed());
 		PlayerPrefs.SetInt("score", Score);

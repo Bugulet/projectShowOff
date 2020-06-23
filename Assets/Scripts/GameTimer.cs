@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
+using TMPro;
 
 public class GameTimer : MonoBehaviour
 {
 	[SerializeField]
 	public float TimerCount;
-	public Text TimerText;
+	public TextMeshProUGUI TimerText;
 
 	
 	[SerializeField]

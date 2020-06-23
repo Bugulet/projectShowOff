@@ -25,8 +25,10 @@ public class UpgradeManager : MonoBehaviour
 	public GameObject CleanHouses;
 	public GameObject TrashedHouses;
 
-	
+	[SerializeField]
+	private GameObject upgradeTutorial;
 
+	private bool playTutorialOnce = false;
 	private GarbageTruckButton garbageTruck;
 	private GameTimer gameTimer;
 
@@ -61,6 +63,11 @@ public class UpgradeManager : MonoBehaviour
 				GoToEnd();
 			}
 		}
+		else
+		{
+			DisableAllButtons();
+			DisableUpgradeButton();
+		}
 		/*if(gameTimer.TimerCount < 0)
 		{
 			SceneChanger.GoToEnd();
@@ -70,7 +77,13 @@ public class UpgradeManager : MonoBehaviour
 	private void EnableUpgradeButton()
 	{
 		MacroUpgradeButton.SetActive(true);
+		if (playTutorialOnce == false)
+		{
+			upgradeTutorial.SetActive(true);
+			playTutorialOnce = true;
+		}
 	}
+	
 
 	private void DisableUpgradeButton()
 	{
