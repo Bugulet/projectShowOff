@@ -34,7 +34,7 @@ public class AnimateUi : MonoBehaviour
 		{
 			yield return new WaitForSeconds(0.03f);
 			currentSpriteIndex = (currentSpriteIndex + 1) % (SpriteSheet.Length -1);
-            print("picture size "+SpriteSheet[currentSpriteIndex].texture.width);
+           // print("picture size "+SpriteSheet[currentSpriteIndex].texture.width);
 		}
 		
 	}

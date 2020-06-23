@@ -71,15 +71,15 @@ public class ScoreCounter : MonoBehaviour
     }
 	IEnumerator ChangeTextColorGreen()
 	{
-		scoreText.color = Color.green;
+		scoreText.color = new Color32(255, 255, 0, 255);
 		yield return new WaitForSeconds(3);
-		scoreText.color = Color.black;
+		scoreText.color = Color.white;
 	}
 	IEnumerator ChangeTextColorRed()
 	{
-		scoreText.color = Color.red;
+		scoreText.color = new Color32(255, 0, 0, 255);
 		yield return new WaitForSeconds(3);
-		scoreText.color = Color.black;
+		scoreText.color = Color.white;
 	}
 
 }
