@@ -35,7 +35,8 @@ public class Factory : MonoBehaviour
 
     [SerializeField]
     private GameObject textFeedback;
-
+	[SerializeField]
+	private Jun_TweenRuntime TweenEffect;
     private MinigameInterface MiniGame;
 
     private void Start()
@@ -64,6 +65,7 @@ public class Factory : MonoBehaviour
 						itemToBeRecycled.gameObject.SetActive(false);
 						itemsRecycled++;
 						Globals.ItemsRecycled++;
+						TweenEffect.Play();
 						FindObjectOfType<SoundEffects>().PlayGoodSound();
 
 					}
