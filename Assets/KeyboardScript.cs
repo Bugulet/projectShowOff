@@ -31,4 +31,10 @@ public class KeyboardScript : MonoBehaviour
         scoreboard.SetSessionName(text.text);
     }
 
+    public void RemoveCharacter()
+    {
+        text.text = text.text.Remove(text.text.Length - 1);
+        scoreboard.SetSessionName(text.text);
+    }
+
 }

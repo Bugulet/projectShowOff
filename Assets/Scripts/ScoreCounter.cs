@@ -19,9 +19,7 @@ public class ScoreCounter : MonoBehaviour
 
 	private Text InstanceHolder;
 	private Canvas canvas;
-
-
-	
+    
     public int Score { get; private set; }
 	
 	void Start()
@@ -35,7 +33,6 @@ public class ScoreCounter : MonoBehaviour
 		if (Input.GetKey(KeyCode.V))
 		{
 			IncreaseTheScore(1);
-			
 		}
     }
 

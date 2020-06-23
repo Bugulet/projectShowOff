@@ -37,8 +37,8 @@ public class EnvironmentManager : MonoBehaviour
 		{
 			TrashedHouses.SetActive(false);
 			OtherTrash.SetActive(false);
-			BadTiles.SetActive(false);
-			CleanTiles.SetActive(true);
+			//BadTiles.SetActive(false);
+			//CleanTiles.SetActive(true);
 			CleanHouses.SetActive(true);
 
 		}

@@ -9,48 +9,44 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Image))]
 public class AnimateUi : MonoBehaviour
 {
-	
-
-	
 	private Image image;
 
 	public float endAnimationTime;
 	public Sprite[] SpriteSheet;
 
-	private void Awake()
-	{
-		
+    int currentSpriteIndex = 0;
 
+    private void Awake()
+	{
 		image = GetComponent<Image>();
 		image.preserveAspect = true;
 	}
 
-	public IEnumerator StartAnimation()
+    private void Update()
+    {
+        image.sprite = SpriteSheet[currentSpriteIndex];
+    }
+
+    public IEnumerator StartAnimation()
 	{
-		var currentSpriteIndex = 0;
-
-		while (true)
+        StartCoroutine(CloseAnimation());
+        while (true)
 		{
-			image.sprite = SpriteSheet[currentSpriteIndex];
-
-			yield return new WaitForSeconds(0.07f);
-
+			yield return new WaitForSeconds(0.03f);
 			currentSpriteIndex = (currentSpriteIndex + 1) % (SpriteSheet.Length -1);
-
-			StartCoroutine(CloseAnimation());
+            print("picture size "+SpriteSheet[currentSpriteIndex].texture.width);
 		}
 	}
+
 	public void PlayAnimation()
 	{
 		this.gameObject.SetActive(true);
 		StartCoroutine(StartAnimation());
-
 	}
 
 	public IEnumerator CloseAnimation()
 	{
 		yield return new WaitForSeconds(endAnimationTime);
-
 		this.gameObject.SetActive(false);
 	}
 }
