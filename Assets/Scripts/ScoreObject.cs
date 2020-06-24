@@ -12,9 +12,11 @@ public class ScoreObject
     public int score = 0;
     public string name = "";
     public AnimalTeam team=AnimalTeam.Empty;
+    public int feedback = 5;
 
-    public ScoreObject(int _score, string _name, AnimalTeam _team)
+    public ScoreObject(int _score, string _name, AnimalTeam _team, int _feedback)
     {
+        feedback = _feedback;
         score = _score;
         name = _name;
         team = _team;
@@ -22,6 +24,6 @@ public class ScoreObject
 
     public override string ToString()
     {
-        return string.Format("Score: {0}   Name: {1}   Team:{2}", score, name, team);
+        return string.Format("Score: {0}   Name: {1}   Team:{2}  Feedback:{3}", score, name, team,feedback);
     }
 }
