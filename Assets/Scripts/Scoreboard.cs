@@ -13,7 +13,7 @@ public class Scoreboard : MonoBehaviour
 
     private string currentSessionName = "";
 
-    private int currentFeedback = 5;
+    private int currentFeedback = 0;
 
     [SerializeField]
     private GameObject scoreGameObject, currentSessionGameObject, scoreElement;
@@ -88,7 +88,7 @@ public class Scoreboard : MonoBehaviour
         PlayerPrefs.SetInt("sessionCounter", sessionCounter + 1);
 
         //create entry on text file
-        {
+       /* {
             sessionString += string.Format(" Played: {0} seconds, at {1}", Time.time, System.DateTime.Today);
 
             print(sessionString);
@@ -111,7 +111,7 @@ public class Scoreboard : MonoBehaviour
             {
                 sw.WriteLine(sessionString);
             }
-        }
+        }*/
         
         
     }

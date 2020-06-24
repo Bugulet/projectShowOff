@@ -1,0 +1,8 @@
+{"score":77,"name":"MIHAI","team":3,"feedback":4} Played: 41.32318 seconds, at 6/24/2020 12:00:00 AM
+{"score":12,"name":"","team":2,"feedback":3} Played: 88.95528 seconds, at 6/24/2020 12:00:00 AM
+{"score":18,"name":"","team":3,"feedback":3} Played: 31.74716 seconds, at 6/24/2020 12:00:00 AM
+{"score":19,"name":"","team":3,"feedback":5} Played: 8.657846 seconds, at 6/24/2020 12:00:00 AM
+{"score":19,"name":"MI","team":3,"feedback":5} Played: 20.43339 seconds, at 6/24/2020 12:00:00 AM
+{"score":70,"name":"","team":3,"feedback":3} Played: 3.467049 seconds, at 6/24/2020 12:00:00 AM
+{"score":70,"name":"","team":3,"feedback":0} Played: 6.084288 seconds, at 6/24/2020 12:00:00 AM
+{"score":21,"name":"MI","team":3,"feedback":5} Played: 61.41415 seconds, at 6/24/2020 12:00:00 AM
