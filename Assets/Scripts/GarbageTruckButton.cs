@@ -18,6 +18,8 @@ public class GarbageTruckButton : MonoBehaviour
 
 	bool TutorialFlag = false;
 	bool OneTimeTutorial = false;
+
+	public AudioSource honkSound;
    // private Text innerText;
 
     // Start is called before the first frame update
@@ -55,6 +57,7 @@ public class GarbageTruckButton : MonoBehaviour
 				StartCoroutine(playTutorial());
 			}
 		}
+		
 		//print(Globals.ItemsRecycled);
     }
 
@@ -112,5 +115,9 @@ public class GarbageTruckButton : MonoBehaviour
 
 		TutorialFlag = false;
 		tutorialPanel.SetActive(false);
+	}
+	public void PlaySound()
+	{
+		if (fillBar.fillAmount == 1) { honkSound.Play(); }
 	}
 }
