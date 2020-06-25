@@ -27,6 +27,8 @@ public class MetalMinigame : MonoBehaviour, MinigameInterface
 	[SerializeField]
 	private GameObject OrganicAnimationContainer;
 
+	private bool isTutorialFirstTime = false;
+
     public bool IsMinigameFinished()
     {
         //TODO: change this 
@@ -104,8 +106,18 @@ public class MetalMinigame : MonoBehaviour, MinigameInterface
 	private IEnumerator StartTutorial()
 	{
 		//waitTimeForTutorial = EditorWaitTimeForTutorial;
-		yield return new WaitForSeconds(EditorWaitTimeForTutorial);
-		tutorial.SetActive(true);
+		if(isTutorialFirstTime == false)
+		{
+			isTutorialFirstTime = true;
+			yield return new WaitForSeconds(0);
+			tutorial.SetActive(true);
+		}
+		else
+		{
+			yield return new WaitForSeconds(EditorWaitTimeForTutorial);
+			tutorial.SetActive(true);
+		}
+		
 
 	}
 }

@@ -30,6 +30,7 @@ public class OrganicMinigame : MonoBehaviour , MinigameInterface
 	[SerializeField]
 	private GameObject PlasticAnimationContainer;
 
+	private bool isTutorialFirstTime = false;
 	// Start is called before the first frame update
 	void Start()
     {
@@ -64,12 +65,14 @@ public class OrganicMinigame : MonoBehaviour , MinigameInterface
 			StartCoroutine(StartTutorial());
 			if (IsMinigameFinished())
 			{
+				
 				PlasticFactory.AddScoreAndMaterials();
 				ResetMiniGame();
 				PlasticAnimationContainer.SetActive(true);
 				PlasticAnimation.PlayAnimation();
 				this.gameObject.SetActive(false);
 				PlasticMinigameContainer.SetActive(false);
+				
 			}
 		}
 	}
@@ -90,9 +93,19 @@ public class OrganicMinigame : MonoBehaviour , MinigameInterface
     }
 	private IEnumerator StartTutorial()
 	{
-		//timeBeforeTutorialStarts = EditorTimeBeforeTutorialStarts;
-		yield return new WaitForSeconds(EditorTimeBeforeTutorialStarts);
-		tutorial.SetActive(true);
+		if (isTutorialFirstTime == false)
+		{
+			isTutorialFirstTime = true;
+			yield return new WaitForSeconds(0);
+			tutorial.SetActive(true);
+		}
+		else
+		{
+			yield return new WaitForSeconds(EditorTimeBeforeTutorialStarts);
+			tutorial.SetActive(true);
+		}
+		
 	}
+	
     
 }

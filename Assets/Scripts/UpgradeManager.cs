@@ -68,6 +68,10 @@ public class UpgradeManager : MonoBehaviour
 			DisableAllButtons();
 			DisableUpgradeButton();
 		}
+		if(buttonIsHidden[1] == true && buttonIsHidden[2] == true  && buttonIsHidden[5] == true && buttonIsHidden[6] == true && buttonIsHidden[7] == true)
+		{
+			DisableUpgradeButton();
+		}
 		/*if(gameTimer.TimerCount < 0)
 		{
 			SceneChanger.GoToEnd();

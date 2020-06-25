@@ -2,10 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class QuitGame : MonoBehaviour
 {
-   public void Quit()
-   {
-	  Application.Quit();
-   }
+	private void Start()
+	{
+#if UNITY_WEBGL
+		this.gameObject.SetActive(false);
+#endif
+	}
+	public void Quit()
+    {
+		Application.Quit();
+    }
+	
 }

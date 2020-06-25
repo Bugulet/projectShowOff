@@ -32,6 +32,7 @@ public class PaperFactoryMiniGame : MonoBehaviour , MinigameInterface
 	private GameObject MinigameContainer;
 	[SerializeField]
 	private GameObject MetalAnimationContainer;
+	private bool isTutorialFirstTime = false;
 
 	private void Update()
 	{
@@ -40,6 +41,7 @@ public class PaperFactoryMiniGame : MonoBehaviour , MinigameInterface
 			StartCoroutine(StartTutorial());
 			if (IsMinigameFinished())
 			{
+				
 				MetalFactory.AddScoreAndMaterials();
 				ResetMiniGame();
 				MetalAnimationContainer.SetActive(true);
@@ -75,7 +77,18 @@ public class PaperFactoryMiniGame : MonoBehaviour , MinigameInterface
 	private IEnumerator StartTutorial()
 	{
 		//timeBeforeTutorialAppears = EditorTimeBeforeTutorialAppears;
-		yield return new WaitForSeconds(EditorTimeBeforeTutorialAppears);
-		tutorial.SetActive(true);
+		if (isTutorialFirstTime == false)
+		{
+			isTutorialFirstTime = true;
+			yield return new WaitForSeconds(0);
+			tutorial.SetActive(true);
+		}
+		else
+		{
+			yield return new WaitForSeconds(EditorTimeBeforeTutorialAppears);
+			tutorial.SetActive(true);
+		}
+		
 	}
+	
 }
