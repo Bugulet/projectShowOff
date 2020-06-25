@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using TMPro;
 using System;
 using System.IO;
 
@@ -16,38 +16,58 @@ public class Scoreboard : MonoBehaviour
     private int currentFeedback = 0;
 
     [SerializeField]
-    private GameObject scoreGameObject, currentSessionGameObject, scoreElement;
+    private GameObject scoreGameObjectDaily, currentSessionGameObject, scoreElement, scoreGameObjectGlobal;
     
 
     public void Start()
     {
         PrintAllSessions();
 
-        if (scoreGameObject != null && currentSessionGameObject!=null)
+        if (scoreGameObjectDaily != null && currentSessionGameObject!=null && scoreGameObjectGlobal!=null)
         {
-            
             List<ScoreObject> scoreSessions = GetAllSessions();
-
             ScoreObject currentSession = scoreSessions[scoreSessions.Count - 1];
-            
 
             scoreSessions.Sort((x, y) => y.score - x.score);
 
+            int dailyCounter = 0;
 
             for (int i = 0; i < scoreSessions.Count; i++)
             {
-                GameObject newElement = Instantiate(scoreElement, scoreGameObject.transform);
-
-                newElement.transform.GetChild(1).GetComponent<Text>().text = (i + 1).ToString();
-                newElement.transform.GetChild(2).transform.GetChild(0).GetComponent<Text>().text = scoreSessions[i].name;
-                newElement.transform.GetChild(3).transform.GetChild(0).GetComponent<Text>().text = scoreSessions[i].score.ToString();
-                newElement.transform.GetChild(4).transform.GetChild((int)scoreSessions[i].team-1).gameObject.SetActive(true);
-
-                if (scoreSessions[i] == currentSession)
+                //daily leaderboard
+                if (new System.DateTime( scoreSessions[i].date).CompareTo(System.DateTime.Today)==0 && dailyCounter<10)
                 {
-                    newElement.transform.GetChild(0).gameObject.SetActive(true);
+                    GameObject newElementDaily;
+                    newElementDaily = scoreGameObjectDaily.transform.GetChild(dailyCounter).gameObject;
+                    dailyCounter++;
+
+                    newElementDaily.transform.GetChild(2).transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = scoreSessions[i].name;
+                    newElementDaily.transform.GetChild(3).transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = scoreSessions[i].score.ToString();
+                    newElementDaily.transform.GetChild(4).transform.GetChild(Math.Max((int)scoreSessions[i].team - 1, 0)).gameObject.SetActive(true);
+
+                    if (scoreSessions[i] == currentSession)
+                    {
+                        newElementDaily.transform.GetChild(0).gameObject.SetActive(true);
+                    }
                 }
-                
+
+                if (i < 25)
+                {
+                    //global leaderboard
+                    GameObject newElementGlobal;
+
+                    newElementGlobal = scoreGameObjectGlobal.transform.GetChild(i).gameObject;
+
+                    newElementGlobal.transform.GetChild(2).transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = scoreSessions[i].name;
+                    newElementGlobal.transform.GetChild(3).transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = scoreSessions[i].score.ToString();
+                    newElementGlobal.transform.GetChild(4).transform.GetChild(Math.Max((int)scoreSessions[i].team - 1, 0)).gameObject.SetActive(true);
+
+                    if (scoreSessions[i] == currentSession)
+                    {
+                        newElementGlobal.transform.GetChild(0).gameObject.SetActive(true);
+                    }
+                }
+
             }
         }
         else
@@ -59,20 +79,14 @@ public class Scoreboard : MonoBehaviour
 
     public void CreateNewEntry()
     {
-
         int sessionCounter;
-
         int score = PlayerPrefs.GetInt("score");
-
         AnimalTeam team = currentSessionTeam;
-
         string name = currentSessionName;
-
         int feedback = currentFeedback;
-
-        ScoreObject sessionObject = new ScoreObject(score, name, team,feedback);
-
+        ScoreObject sessionObject = new ScoreObject(score, name, team,feedback, System.DateTime.Today);
         string sessionString = JsonUtility.ToJson(sessionObject);
+
 
         if (PlayerPrefs.HasKey("sessionCounter"))
         {
@@ -122,7 +136,7 @@ public class Scoreboard : MonoBehaviour
         {
             string jsonSession = PlayerPrefs.GetString(i + "sessionKey");
             ScoreObject sessionObject = JsonUtility.FromJson<ScoreObject>(jsonSession);
-            print(jsonSession);
+            print(sessionObject);
         }
     }
 
@@ -161,7 +175,9 @@ public class Scoreboard : MonoBehaviour
 
         int feedback = UnityEngine.Random.Range(1, 6);
 
-        ScoreObject sessionObject = new ScoreObject(score, name, team,feedback);
+        System.DateTime randomDate = new DateTime(UnityEngine.Random.Range(2016, 2020), UnityEngine.Random.Range(1, 12), UnityEngine.Random.Range(1, 25));
+
+        ScoreObject sessionObject = new ScoreObject(score, name, team,feedback,randomDate);
 
         string sessionString = JsonUtility.ToJson(sessionObject);
 
@@ -177,7 +193,7 @@ public class Scoreboard : MonoBehaviour
 
         PlayerPrefs.SetString(sessionCounter + "sessionKey", sessionString);
         PlayerPrefs.SetInt("sessionCounter", sessionCounter + 1);
-        print("Added random session: "+ sessionString);
+        print("Added random session: "+ sessionObject);
     }
 
     //getters
