@@ -18,11 +18,14 @@ public class ScoreMaterialChanger : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (counter.Score > 0 && counter.Score - 1 < transform.childCount)
+        if (counter.Score > 0 && Mathf.Max(counter.Score - 1,0) < transform.childCount)
         {
+			
             changeHexagon objectTween = transform.GetChild(counter.Score - 1).GetComponent<changeHexagon>();
-
-            objectTween.StartMorphing(swapMaterial);
+			if (objectTween != null)
+			{
+				objectTween.StartMorphing(swapMaterial);
+			}
         }
         
 

@@ -34,7 +34,7 @@ public class GameTimer : MonoBehaviour
 			endPanel.SetActive(true);
 			
 		}
-		print(Globals.isGameOver);
+
 		
     }
 }

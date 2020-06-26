@@ -8,9 +8,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/StartScene.unity
     guid: e12bc865065f5494096173ce5c19f0ee
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Scenes/InstructionScene.unity
+    guid: 52acf532359a2ff4faf7fabac49102c9
   - enabled: 1
     path: Assets/Scenes/Merged Scenes/Patrick & Mihai.unity
     guid: 67955530693e0a0499fd363874f37921
